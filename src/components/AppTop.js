@@ -31,23 +31,20 @@ export default class AppTop extends PureComponent<Props> {
     render() {
         const { title, themeColor, children } = this.props
         return (
-            <View>
-                <LinearGradient
-                    colors={themeColor.length > 1 ? themeColor : [...themeColor, ...themeColor]}
-                    start={{ x: 0, y: 0 }}
-                    end={{ x: 1, y: 0 }}
-                    style={styles.appBar}
-                >
-                    <BorderlessButton activeOpacity={0.8} style={styles.btn} onPress={this.handleOnPress}>
-                        <Icon name="menu" size={20} color="#fff" />
-                    </BorderlessButton>
-                </LinearGradient>
-
+            <LinearGradient
+                colors={themeColor.length > 1 ? themeColor : [...themeColor, ...themeColor]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.appBar}
+            >
+                <BorderlessButton activeOpacity={0.8} style={styles.btn} onPress={this.handleOnPress}>
+                    <Icon name="menu" size={20} color="#fff" />
+                </BorderlessButton>
                 <Text style={styles.appTitle} numberOfLines={1}>
                     {title}
                 </Text>
                 {children || null}
-            </View>
+            </LinearGradient>
         )
     }
 }
@@ -62,7 +59,6 @@ const styles = StyleSheet.create({
     btn: {
         width: 48,
         height: 48,
-        zIndex: 1,
         backgroundColor: 'rgba(0,0,0,0)',
         justifyContent: 'center',
         alignItems: 'center',
@@ -72,5 +68,6 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         color: '#fff',
+        textAlign: 'center',
     },
 })
