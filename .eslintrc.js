@@ -5,6 +5,8 @@ module.exports = {
         es6: true,
         node: true,
     },
+    // https://eslint.org/docs/user-guide/configuring
+    globals: { __DEV__: 'readable', console: 'readable', $: 'readable', __IOS__: 'readable' },
     parser: 'babel-eslint',
     extends: ['eslint:recommended', 'plugin:flowtype/recommended', 'plugin:react/recommended'],
     parserOptions: {
