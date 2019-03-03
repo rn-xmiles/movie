@@ -10,18 +10,71 @@
  */
 
 import React, { PureComponent } from 'react'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
+import { BorderlessButton } from 'react-native-gesture-handler'
+import { NavigationDrawerScreenOptions, NavigationScreenProps } from 'react-navigation'
+import Icon from 'react-native-vector-icons/Feather'
 
-type Props = {
-    navigation: any,
-}
-export default class Index extends PureComponent<Props> {
+import AppTop from './components/AppTop'
+
+const tabList = [
+    {
+        type: 'movie',
+        name: '电影',
+    },
+    {
+        type: 'tv',
+        name: '电视剧',
+    },
+    {
+        type: 'comic',
+        name: '动漫',
+    },
+    {
+        type: 'variety',
+        name: '综艺',
+    },
+]
+
+export default class Index extends PureComponent<NavigationScreenProps> {
+    static navigationOptions: NavigationDrawerScreenOptions = {
+        drawerLabel: '首页',
+        drawerIcon: ({ tintColor }) => <Icon name="home" size={18} color={tintColor} />,
+    }
     render() {
+        const {
+            navigation,
+            screenProps: { themeColor },
+        } = this.props
+
         return (
-            <View>
-                <Text>Index</Text>
-                <Button title="Learn More" color="#841584" onPress={() => this.props.navigation.toggleDrawer()} />
+            <View style={styles.container}>
+                <AppTop title="爱看电影" navigation={navigation} themeColor={themeColor}>
+                    <BorderlessButton
+                        activeOpacity={0.8}
+                        style={styles.btn}
+                        onPress={() => navigation.navigate('Search')}
+                    >
+                        <Icon name="search" size={20} color="#fff" />
+                    </BorderlessButton>
+                </AppTop>
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#f7f7f7',
+    },
+
+    btn: {
+        width: 48,
+        height: 48,
+        zIndex: 1,
+        backgroundColor: 'rgba(0,0,0,0)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})

@@ -27,6 +27,9 @@ import {
 import ProfileScreen from './src/pages/ProfileScreen'
 import Index from './src/index'
 
+// theme
+import { themesGradient } from './src/pages/Theme'
+
 // DrawerNavigator config 配置
 const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
     drawerWidth: $.WIDTH * 0.7,
@@ -73,7 +76,19 @@ const AppContainer = createAppContainer(
 
 type Props = {}
 export default class Movie extends Component<Props> {
+    state = {
+        themeColor: themesGradient[0].color,
+    }
+
+    setTheme = (themeColor) => {
+        this.setState({
+            themeColor,
+        })
+    }
+
     render() {
-        return <AppContainer />
+        const { themeColor } = this.state
+
+        return <AppContainer screenProps={{ themeColor, setTheme: this.setTheme }} />
     }
 }
