@@ -110906,7 +110906,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[7], "@babel/runtime/helpers/inherits"));
 
-  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[8], "react"));
+  var React = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[8], "react"));
 
   var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[9], "./../../node_modules/react-transform-hmr/lib/index.js"));
 
@@ -110933,7 +110933,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     filename: "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\src\\components\\AppTop.js",
     components: _components,
     locals: [module],
-    imports: [_react.default]
+    imports: [React.default]
   });
 
   function _wrapComponent(id) {
@@ -110942,8 +110942,8 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     };
   }
 
-  var AppTop = _wrapComponent("AppTop")((_temp = function (_PureComponent) {
-    (0, _inherits2.default)(AppTop, _PureComponent);
+  var AppTop = _wrapComponent("AppTop")((_temp = function (_React$PureComponent) {
+    (0, _inherits2.default)(AppTop, _React$PureComponent);
 
     function AppTop() {
       var _getPrototypeOf2;
@@ -110973,7 +110973,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
             title = _this$props.title,
             themeColor = _this$props.themeColor,
             children = _this$props.children;
-        return _react.default.createElement(_reactNativeLinearGradient.default, {
+        return React.createElement(_reactNativeLinearGradient.default, {
           colors: themeColor.length > 1 ? themeColor : [].concat((0, _toConsumableArray2.default)(themeColor), (0, _toConsumableArray2.default)(themeColor)),
           start: {
             x: 0,
@@ -110986,36 +110986,36 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.appBar,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 35
+            lineNumber: 37
           }
-        }, _react.default.createElement(_reactNativeGestureHandler.BorderlessButton, {
+        }, React.createElement(_reactNativeGestureHandler.BorderlessButton, {
           activeOpacity: 0.8,
           style: styles.btn,
           onPress: this.handleOnPress,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 41
+            lineNumber: 43
           }
-        }, _react.default.createElement(_Feather.default, {
+        }, React.createElement(_Feather.default, {
           name: "menu",
           size: 20,
           color: "#fff",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 44
           }
-        })), _react.default.createElement(_reactNative.Text, {
+        })), React.createElement(_reactNative.Text, {
           style: styles.appTitle,
           numberOfLines: 1,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 44
+            lineNumber: 46
           }
         }, title), children || null);
       }
     }]);
     return AppTop;
-  }(_react.PureComponent), _temp));
+  }(React.PureComponent), _temp));
 
   var _default2 = AppTop;
   exports.default = _default2;
