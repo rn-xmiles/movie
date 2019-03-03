@@ -10,45 +10,53 @@
  */
 
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator'
+
+// import { Text, View } from 'react-native'
 import {
     createAppContainer,
     createStackNavigator,
-    createBottomTabNavigator /* NavigationEvents */,
+    /* createBottomTabNavigator NavigationEvents */
 } from 'react-navigation'
 
-class ProfileScreen extends Component<{}> {
-    render() {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}
-            >
-                <Text>Profile Screen</Text>
-            </View>
-        )
-    }
+// pages/Screen
+import ProfileScreen from './src/pages/ProfileScreen'
+
+// StackNavigator config配置
+const StackNavigatorConfig = {
+    headerMode: 'none',
+    mode: 'card',
+    cardStyle: {
+        //backgroundColor:'red'
+    },
+    defaultNavigationOptions: {
+        gesturesEnabled: false,
+    },
+    transitionConfig: () => ({
+        screenInterpolator: StackViewStyleInterpolator.forHorizontal,
+        // screenInterpolator: (sceneProps) => {
+        // 	const { scene } = sceneProps;
+        // 	const { route } = scene;
+        // 	const params = route.params || {};
+        // 	const isModal = params.isModal;
+        // 	if (isModal){
+        // 	  //当为`true`时，采用`modal`效果
+        // 	  return StackViewStyleInterpolator.forVertical(sceneProps);
+        // 	}else {
+        // 	  return StackViewStyleInterpolator.forHorizontal(sceneProps);
+        // 	}
+        //   },
+    }),
 }
 
-const SettingsStack = createStackNavigator(
-    {
-        Profile: ProfileScreen,
-    },
-    {
-        navigationOptions: {
-            tabBarLabel: '设置',
+const AppContainer = createAppContainer(
+    createStackNavigator(
+        {
+            Profile: ProfileScreen,
         },
-    }
+        StackNavigatorConfig
+    )
 )
-
-const TabNavigator = createBottomTabNavigator({
-    Settings: SettingsStack,
-})
-
-const AppContainer = createAppContainer(TabNavigator)
 
 type Props = {}
 export default class Movie extends Component<Props> {
