@@ -8,6 +8,8 @@
  * @author singcl <iambabyer@gmail.com>
  * @see https://github.com/singcl
  */
+// 配置全局变量
+import './utils/global'
 
 import React, { Component } from 'react'
 import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator'
@@ -16,14 +18,24 @@ import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackV
 import {
     createAppContainer,
     createStackNavigator,
-    /* createBottomTabNavigator NavigationEvents */
+    createDrawerNavigator,
+    StackNavigatorConfig as IStackNavigatorConfig, // Interface StackNavigatorConfig 接口
+    DrawerNavigatorConfig as IDrawerNavigatorConfig, // Interface DrawerNavigatorConfig 接口
 } from 'react-navigation'
 
 // pages/Screen
 import ProfileScreen from './src/pages/ProfileScreen'
+import Index from './src/index'
+
+// DrawerNavigator config 配置
+const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
+    drawerWidth: $.WIDTH * 0.7,
+}
+
+const Drawer = createDrawerNavigator({ Index: Index }, DrawerNavigatorConfig)
 
 // StackNavigator config配置
-const StackNavigatorConfig = {
+const StackNavigatorConfig: IStackNavigatorConfig = {
     headerMode: 'none',
     mode: 'card',
     cardStyle: {
@@ -52,6 +64,7 @@ const StackNavigatorConfig = {
 const AppContainer = createAppContainer(
     createStackNavigator(
         {
+            Drawer: Drawer,
             Profile: ProfileScreen,
         },
         StackNavigatorConfig
