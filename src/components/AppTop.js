@@ -20,6 +20,7 @@ interface Props {
     title: String;
     themeColor: Array<String>;
     navigation: NavigationScreenProp;
+    children: React.ReactNode;
 }
 
 export default class AppTop extends PureComponent<Props> {

@@ -110986,7 +110986,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.appBar,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 34
+            lineNumber: 35
           }
         }, _react.default.createElement(_reactNativeGestureHandler.BorderlessButton, {
           activeOpacity: 0.8,
@@ -110994,7 +110994,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           onPress: this.handleOnPress,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 40
+            lineNumber: 41
           }
         }, _react.default.createElement(_Feather.default, {
           name: "menu",
@@ -111002,14 +111002,14 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           color: "#fff",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 41
+            lineNumber: 42
           }
         })), _react.default.createElement(_reactNative.Text, {
           style: styles.appTitle,
           numberOfLines: 1,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 44
           }
         }, title), children || null);
       }
