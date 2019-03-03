@@ -49,7 +49,7 @@ export default class Index extends PureComponent<NavigationScreenProps> {
 
         return (
             <View style={styles.container}>
-                <AppTop title="爱看电影" navigation={navigation} themeColor={themeColor}>
+                <AppTop title="影视经典" navigation={navigation} themeColor={themeColor}>
                     <BorderlessButton
                         activeOpacity={0.8}
                         style={styles.btn}
