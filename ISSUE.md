@@ -66,3 +66,54 @@ Close all terminals and run build again.
 
 问题：Hot Reload 不生效
 方法：摇一摇打开 DEBUG 菜单；点击 Enable HotReload
+
+### 5
+
+```js
+// 引入组件
+import { BorderlessButton } from 'react-native-gesture-handler';
+```
+
+问题：BorderlessButton 组件的 onPress 事件不生效
+
+解决方案：
+
+第一步：
+
+```sh
+react-native link react-native-gesture-handler
+```
+
+第二步：
+
+```java
+// 安卓设备修改 C:\Users\xxx\Desktop\rn-xmiles\movie\android\app\src\main\java\com\movie\MainActivity.java
+
+package com.swmansion.gesturehandler.react.example;
+
+import com.facebook.react.ReactActivity;
++ import com.facebook.react.ReactActivityDelegate;
++ import com.facebook.react.ReactRootView;
++ import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+
+public class MainActivity extends ReactActivity {
+
+  @Override
+  protected String getMainComponentName() {
+    return "Example";
+  }
+
++  @Override
++  protected ReactActivityDelegate createReactActivityDelegate() {
++    return new ReactActivityDelegate(this, getMainComponentName()) {
++      @Override
++      protected ReactRootView createRootView() {
++       return new RNGestureHandlerEnabledRootView(MainActivity.this);
++      }
++    };
++  }
+}
+```
+
+OK.
+@see react-native-gesture-handler 文档： https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html
