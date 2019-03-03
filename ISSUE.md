@@ -61,3 +61,8 @@ React Native Version Mismatch
 ```sh
 Close all terminals and run build again.
 ```
+
+### 4
+
+问题：Hot Reload 不生效
+方法：摇一摇打开 DEBUG 菜单；点击 Enable HotReload
