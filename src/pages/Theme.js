@@ -56,7 +56,7 @@ export const themes = [
     },
 ]
 
-export const themesGradient: Array<{ color: Array<String> }> = [
+export const themesGradient: Array<{ color: Array<string> }> = [
     {
         color: ['#ff5858', '#f09819'],
     },

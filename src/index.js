@@ -12,7 +12,7 @@
 import React, { PureComponent } from 'react'
 import { View, Text, Button, StyleSheet } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
-import { NavigationDrawerScreenOptions, NavigationScreenProps } from 'react-navigation'
+import { NavigationDrawerScreenOptions, NavigationScreenProp } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Feather'
 
 import AppTop from './components/AppTop'
@@ -39,7 +39,13 @@ const tabList = [
     },
 ]
 
-export default class Index extends PureComponent<NavigationScreenProps> {
+type Props = {
+    navigation: NavigationScreenProp,
+    screenProps: {
+        themeColor: Array<string>,
+    },
+}
+export default class Index extends PureComponent<Props> {
     static navigationOptions: NavigationDrawerScreenOptions = {
         drawerLabel: '首页',
         drawerIcon: ({ tintColor }) => <Icon name="home" size={18} color={tintColor} />,

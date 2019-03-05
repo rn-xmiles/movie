@@ -8,6 +8,9 @@
  * @author singcl <iambabyer@gmail.com>
  * @see https://github.com/singcl
  */
+
+declare var $: any
+
 // 配置全局变量
 import './utils/global'
 
@@ -75,12 +78,13 @@ const AppContainer = createAppContainer(
 )
 
 type Props = {}
-export default class Movie extends Component<Props> {
+type State = { themeColor: Array<string> }
+export default class Movie extends Component<Props, State> {
     state = {
         themeColor: themesGradient[0].color,
     }
 
-    setTheme = (themeColor) => {
+    setTheme = (themeColor: Array<string>): any => {
         this.setState({
             themeColor,
         })
