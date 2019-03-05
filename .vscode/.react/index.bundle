@@ -1371,7 +1371,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   _reactNative.AppRegistry.registerComponent(_app.name, function () {
     return _App.default;
   });
-},0,[1,2,560,745],"index.js");
+},0,[1,2,560,750],"index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -88928,7 +88928,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _default2 = Movie;
   exports.default = _default2;
-},560,[1,561,19,20,27,30,33,47,200,562,563,565,689,690,744],"App.js");
+},560,[1,561,19,20,27,30,33,47,200,562,563,565,689,690,749],"App.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   function _interopRequireWildcard(obj) {
     if (obj && obj.__esModule) {
@@ -108674,6 +108674,10 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
 
   var _AppTop = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[13], "./components/AppTop"));
 
+  var _ScrollViewPager = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[14], "./components/ScrollViewPager"));
+
+  var _Home = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[15], "./pages/Home"));
+
   var _class,
       _temp,
       _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\src\\index.js";
@@ -108729,7 +108733,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           style: styles.container,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 54
           }
         }, _react.default.createElement(_AppTop.default, {
           title: "\u5F71\u89C6\u7ECF\u5178",
@@ -108737,7 +108741,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           themeColor: themeColor,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 55
           }
         }, _react.default.createElement(_reactNativeGestureHandler.BorderlessButton, {
           activeOpacity: 0.8,
@@ -108747,7 +108751,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           },
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 53
+            lineNumber: 56
           }
         }, _react.default.createElement(_Feather.default, {
           name: "search",
@@ -108755,9 +108759,20 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
           color: "#fff",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 61
           }
-        }))));
+        }))), _react.default.createElement(_ScrollViewPager.default, {
+          themeColor: themeColor[0],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 65
+          }
+        }, _react.default.createElement(_Home.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 66
+          }
+        })));
       }
     }]);
     return Index;
@@ -108771,7 +108786,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
         color: tintColor,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42
+          lineNumber: 45
         }
       });
     }
@@ -108793,7 +108808,7 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
       alignItems: 'center'
     }
   });
-},690,[1,561,19,20,27,30,33,47,200,2,619,565,691,741],"src\\index.js");
+},690,[1,561,19,20,27,30,33,47,200,2,619,565,691,741,744,751],"src\\index.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
 
@@ -111212,6 +111227,722 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
   exports.default = _default;
 },743,[2],"node_modules\\react-native-linear-gradient\\common.js");
 __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireWildcard");
+
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = ScrollViewPagerRPC;
+
+  var React = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[2], "react"));
+
+  var _reactNativeScrollviewpager = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "react-native-scrollviewpager"));
+
+  var _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\src\\components\\ScrollViewPager.js";
+
+  var tabBarOptions = function tabBarOptions(themeColor) {
+    return {
+      style: {
+        paddingHorizontal: 10,
+        height: 40,
+        backgroundColor: '#fff'
+      },
+      labelStyle: {
+        color: '#666'
+      },
+      activeTintColor: themeColor,
+      indicatorStyle: {
+        width: 20,
+        borderRadius: 4,
+        height: 3,
+        backgroundColor: themeColor,
+        bottom: 2
+      }
+    };
+  };
+
+  function ScrollViewPagerRPC(props) {
+    var themeColor = props.themeColor,
+        children = props.children;
+    return React.createElement(_reactNativeScrollviewpager.default, {
+      tabBarOptions: tabBarOptions(themeColor),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 41
+      }
+    }, children);
+  }
+},744,[561,1,47,745],"src\\components\\ScrollViewPager.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _ScrollViewPager = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "./lib/ScrollViewPager"));
+
+  var _default = _ScrollViewPager.default;
+  exports.default = _default;
+},745,[1,746],"node_modules\\react-native-scrollviewpager\\index.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./../../react-transform-hmr/lib/index.js"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _ViewPager = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[10], "./ViewPager"));
+
+  var _Touchable = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[11], "./Touchable"));
+
+  var _class,
+      _temp,
+      _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\node_modules\\react-native-scrollviewpager\\lib\\ScrollViewPager.js";
+
+  var _components = {
+    ScrollViewPager: {
+      displayName: "ScrollViewPager"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\node_modules\\react-native-scrollviewpager\\lib\\ScrollViewPager.js",
+    components: _components,
+    locals: [module],
+    imports: [_react.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var UIManager = _reactNative.NativeModules.UIManager;
+
+  var _Dimensions$get = _reactNative.Dimensions.get('window'),
+      width = _Dimensions$get.width;
+
+  var ScrollViewPager = _wrapComponent("ScrollViewPager")((_temp = _class = function (_PureComponent) {
+    (0, _inherits2.default)(ScrollViewPager, _PureComponent);
+
+    function ScrollViewPager(props) {
+      var _this;
+
+      (0, _classCallCheck2.default)(this, ScrollViewPager);
+      _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(ScrollViewPager).call(this, props));
+      _this.tabswidth = [];
+      _this.tabsdir = [];
+      _this.xoffset = 0;
+      _this.scrollWidth = 0;
+
+      _this.onPageSelected = function (pageIndex) {
+        _this.xScroll(pageIndex);
+
+        _reactNative.LayoutAnimation.configureNext({
+          duration: 200,
+          update: {
+            type: 'easeInEaseOut'
+          }
+        });
+
+        _this.props.onPageSelected && _this.props.onPageSelected(pageIndex);
+      };
+
+      _this.xScroll = function (pageIndex) {
+        if (_this.scrollWidth == 0) {
+          return;
+        }
+
+        if (_this.props.whenPageSelect) {
+          _this.props.whenPageSelect(pageIndex);
+        }
+
+        _this.setState({
+          pageIndex: pageIndex
+        });
+
+        if (_this.tabsdir[pageIndex] + _this.tabswidth[pageIndex] - _this.scrollWidth > _this.xoffset) {
+          _this.xoffset = _this.tabsdir[pageIndex] + _this.tabswidth[pageIndex] - _this.scrollWidth + 30;
+          var last = _this.tabsdir.length - 1;
+          var max = _this.tabsdir[last] + _this.tabswidth[last] - _this.scrollWidth;
+          _this.xoffset = _this.xoffset >= max ? max : _this.xoffset;
+
+          _this.tabbar.scrollTo({
+            x: _this.xoffset,
+            y: 0,
+            animated: true
+          });
+        } else if (_this.xoffset > _this.tabsdir[pageIndex]) {
+          _this.xoffset = _this.tabsdir[pageIndex] - 30;
+          _this.xoffset = _this.xoffset >= 0 ? _this.xoffset : 0;
+
+          _this.tabbar.scrollTo({
+            x: _this.xoffset,
+            y: 0,
+            animated: true
+          });
+        }
+      };
+
+      _this.onSetPage = function (pageIndex) {
+        _this.xScroll(pageIndex);
+
+        _this.viewpager.setPage(pageIndex);
+
+        _reactNative.LayoutAnimation.spring();
+      };
+
+      _this.onlayout = function (e, i) {
+        var _e$nativeEvent$layout = e.nativeEvent.layout,
+            width = _e$nativeEvent$layout.width,
+            x = _e$nativeEvent$layout.x;
+        _this.tabswidth[i] = width;
+        _this.tabsdir[i] = x;
+
+        if (i === _this.state.pageIndex) {
+          _this.setState({
+            initialWidth: width
+          });
+
+          _reactNative.LayoutAnimation.configureNext({
+            duration: 200,
+            update: {
+              type: 'easeInEaseOut'
+            }
+          });
+        }
+
+        if (_this.props.pageIndex != 0) {
+          _this.xScroll(_this.props.pageIndex);
+        }
+      };
+
+      _this.scrollayout = function (e) {
+        var width = e.nativeEvent.layout.width;
+        _this.scrollWidth = width;
+
+        if (_this.props.pageIndex != 0) {
+          _this.xScroll(_this.props.pageIndex);
+        }
+      };
+
+      _this.onContentSizeChange = function (contentWidth) {
+        if (contentWidth > width) {
+          _this.setState({
+            swipeEnabled: true
+          });
+        }
+      };
+
+      _this.scrollEnd = function (e) {
+        _this.xoffset = e.nativeEvent.contentOffset.x;
+      };
+
+      _this.state = {
+        pageIndex: props.pageIndex,
+        initialWidth: 0,
+        swipeEnabled: false
+      };
+      UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
+      return _this;
+    }
+
+    (0, _createClass2.default)(ScrollViewPager, [{
+      key: "render",
+      value: function render() {
+        var _this2 = this;
+
+        var _this$state = this.state,
+            pageIndex = _this$state.pageIndex,
+            initialWidth = _this$state.initialWidth,
+            swipeEnabled = _this$state.swipeEnabled;
+        var _this$props$tabBarOpt = this.props.tabBarOptions,
+            wrapstyle = _this$props$tabBarOpt.wrapstyle,
+            tabconStyle = _this$props$tabBarOpt.tabconStyle,
+            style = _this$props$tabBarOpt.style,
+            labelStyle = _this$props$tabBarOpt.labelStyle,
+            tabStyle = _this$props$tabBarOpt.tabStyle,
+            indicatorStyle = _this$props$tabBarOpt.indicatorStyle,
+            activeTintColor = _this$props$tabBarOpt.activeTintColor;
+
+        var tablabel = _react.default.Children.map(this.props.children, function (child) {
+          return child.props.tablabel;
+        });
+
+        return _react.default.createElement(_reactNative.View, {
+          style: [styles.container, wrapstyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 124
+          }
+        }, _react.default.createElement(_reactNative.View, {
+          style: [styles.scrolltabbar, style],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 125
+          }
+        }, _react.default.createElement(_reactNative.ScrollView, {
+          onLayout: this.scrollayout,
+          bounces: false,
+          onContentSizeChange: this.onContentSizeChange,
+          ref: function ref(tabbar) {
+            return _this2.tabbar = tabbar;
+          },
+          showsHorizontalScrollIndicator: false,
+          contentContainerStyle: [tabconStyle, swipeEnabled && {
+            justifyContent: 'flex-start'
+          }],
+          scrollEnabled: swipeEnabled,
+          onMomentumScrollEnd: this.scrollEnd,
+          horizontal: true,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 126
+          }
+        }, tablabel.map(function (item, i) {
+          return _react.default.createElement(_Touchable.default, {
+            onLayout: function onLayout(e) {
+              return _this2.onlayout(e, i);
+            },
+            key: i,
+            onPress: function onPress() {
+              _this2.onSetPage(i);
+            },
+            style: [styles.tabbaritem, tabStyle],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 139
+            }
+          }, _react.default.createElement(_reactNative.Text, {
+            numberOfLines: 2,
+            style: [styles.tabbartext, labelStyle, pageIndex === i && {
+              color: activeTintColor
+            }],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 139
+            }
+          }, item));
+        }), _react.default.createElement(_reactNative.View, {
+          style: [styles.tabline, {
+            width: this.tabswidth[pageIndex] || initialWidth,
+            left: this.tabsdir[pageIndex]
+          }],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 142
+          }
+        }, _react.default.createElement(_reactNative.View, {
+          style: [styles.indicatorStyle, indicatorStyle],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 143
+          }
+        })))), _react.default.createElement(_ViewPager.default, {
+          ref: function ref(viewpager) {
+            return _this2.viewpager = viewpager;
+          },
+          onPageSelected: this.onPageSelected,
+          initialPage: pageIndex,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 147
+          }
+        }, this.props.children));
+      }
+    }]);
+    return ScrollViewPager;
+  }(_react.PureComponent), _class.defaultProps = {
+    pageIndex: 0
+  }, _temp));
+
+  var _default2 = ScrollViewPager;
+  exports.default = _default2;
+
+  var styles = _reactNative.StyleSheet.create({
+    container: {
+      flex: 1
+    },
+    scrolltabbar: {
+      alignItems: 'stretch',
+      flexDirection: 'row'
+    },
+    tabbaritem: {
+      paddingHorizontal: 15,
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    tabline: {
+      height: '100%',
+      width: 0,
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      justifyContent: 'flex-end',
+      alignItems: 'center'
+    },
+    tabbartext: {
+      fontSize: 14,
+      opacity: 1,
+      textAlign: 'center',
+      color: '#fff'
+    },
+    indicatorStyle: {
+      width: '100%',
+      height: 2,
+      backgroundColor: '#fff'
+    }
+  });
+},746,[1,561,19,20,27,30,33,47,200,2,747,748],"node_modules\\react-native-scrollviewpager\\lib\\ScrollViewPager.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf3 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var _react = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./../../react-transform-hmr/lib/index.js"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[9], "react-native");
+
+  var _class,
+      _temp,
+      _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\node_modules\\react-native-scrollviewpager\\lib\\ViewPager.js";
+
+  var _components = {
+    ViewPagerChild: {
+      displayName: "ViewPagerChild"
+    },
+    ViewPager: {
+      displayName: "ViewPager"
+    }
+  };
+
+  var _reactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\node_modules\\react-native-scrollviewpager\\lib\\ViewPager.js",
+    components: _components,
+    locals: [module],
+    imports: [_react.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _reactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var _Dimensions$get = _reactNative.Dimensions.get('window'),
+      width = _Dimensions$get.width;
+
+  var ViewPagerChild = function (_PureComponent) {
+    (0, _inherits2.default)(ViewPagerChild, _PureComponent);
+
+    function ViewPagerChild() {
+      var _getPrototypeOf2;
+
+      var _this;
+
+      (0, _classCallCheck2.default)(this, ViewPagerChild);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = (0, _possibleConstructorReturn2.default)(this, (_getPrototypeOf2 = (0, _getPrototypeOf3.default)(ViewPagerChild)).call.apply(_getPrototypeOf2, [this].concat(args)));
+      _this.state = {
+        loaded: false
+      };
+      return _this;
+    }
+
+    (0, _createClass2.default)(ViewPagerChild, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        if (this.props.lazyload) {
+          this.setState({
+            loaded: true
+          });
+        }
+      }
+    }, {
+      key: "componentWillUpdate",
+      value: function componentWillUpdate(nextProps, nextState) {
+        if (nextProps.lazyload != this.props.lazyload && !this.state.loaded) {
+          this.setState({
+            loaded: true
+          });
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var loaded = this.state.loaded;
+        return loaded ? this.props.child : null;
+      }
+    }]);
+    return ViewPagerChild;
+  }(_react.PureComponent);
+
+  ViewPagerChild = _wrapComponent("ViewPagerChild")(ViewPagerChild);
+
+  var ViewPager = _wrapComponent("ViewPager")((_temp = _class = function (_PureComponent2) {
+    (0, _inherits2.default)(ViewPager, _PureComponent2);
+
+    function ViewPager(props) {
+      var _this2;
+
+      (0, _classCallCheck2.default)(this, ViewPager);
+      _this2 = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf3.default)(ViewPager).call(this, props));
+
+      _this2.setPage = function (pageIndex) {
+        if (_reactNative.Platform.OS === 'ios') {
+          _this2.viewpager.scrollTo({
+            x: pageIndex * _this2.realWidth,
+            y: 0,
+            animated: true
+          });
+        } else {
+          _this2.viewpager.setPage(pageIndex);
+        }
+
+        _this2.setState({
+          pageIndex: pageIndex
+        });
+      };
+
+      _this2.scrollEnd = function (e) {
+        var onPageSelected = _this2.props.onPageSelected;
+        var nativeEvent = e.nativeEvent;
+        var pageIndex = _this2.state.pageIndex;
+
+        if (_reactNative.Platform.OS === 'ios') {
+          var index = nativeEvent.contentOffset.x / _this2.realWidth;
+
+          if (pageIndex != index) {
+            pageIndex = index;
+            onPageSelected(pageIndex);
+          }
+        } else {
+          pageIndex = nativeEvent.position;
+          onPageSelected(pageIndex);
+        }
+
+        _this2.setState({
+          pageIndex: pageIndex
+        });
+      };
+
+      _this2.state = {
+        pageIndex: props.initialPage
+      };
+      return _this2;
+    }
+
+    (0, _createClass2.default)(ViewPager, [{
+      key: "componentWillUpdate",
+      value: function componentWillUpdate(nextProps, nextState) {}
+    }, {
+      key: "componentWillUnmount",
+      value: function componentWillUnmount() {}
+    }, {
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        if (_reactNative.Platform.OS === 'ios') {
+          this.realWidth = width;
+          var initialPage = this.props.initialPage;
+          this.setPage(initialPage);
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this3 = this;
+
+        var initialPage = this.props.initialPage;
+        var _this$state = this.state,
+            pageIndex = _this$state.pageIndex,
+            isRender = _this$state.isRender;
+        return _react.default.createElement(_reactNative.View, {
+          style: [styles.content],
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 97
+          }
+        }, _reactNative.Platform.OS === 'ios' ? _react.default.createElement(_reactNative.ScrollView, {
+          ref: function ref(viewpager) {
+            return _this3.viewpager = viewpager;
+          },
+          style: styles.content,
+          bounces: false,
+          onMomentumScrollEnd: this.scrollEnd,
+          showsHorizontalScrollIndicator: false,
+          horizontal: true,
+          pagingEnabled: true,
+          onLayout: isRender ? null : this._onLayout,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 100
+          }
+        }, isRender ? _react.default.Children.map(this.props.children, function (child, index) {
+          return _react.default.createElement(_reactNative.View, {
+            style: [styles.content, {
+              width: _this3.realWidth
+            }],
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 113
+            }
+          }, _react.default.createElement(ViewPagerChild, {
+            child: child,
+            lazyload: pageIndex === index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 113
+            }
+          }));
+        }) : _react.default.createElement(_reactNative.View, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 115
+          }
+        })) : _react.default.createElement(_reactNative.ViewPagerAndroid, {
+          ref: function ref(viewpager) {
+            return _this3.viewpager = viewpager;
+          },
+          style: styles.content,
+          initialPage: initialPage,
+          onPageSelected: this.scrollEnd,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 119
+          }
+        }, _react.default.Children.map(this.props.children, function (child, index) {
+          return _react.default.createElement(_reactNative.View, {
+            style: styles.content,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 127
+            }
+          }, _react.default.createElement(ViewPagerChild, {
+            child: child,
+            lazyload: pageIndex === index,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 127
+            }
+          }));
+        })));
+      }
+    }]);
+    return ViewPager;
+  }(_react.PureComponent), _class.defaultProps = {
+    initialPage: 0,
+    onPageSelected: function onPageSelected() {}
+  }, _temp));
+
+  var _default2 = ViewPager;
+  exports.default = _default2;
+
+  var styles = _reactNative.StyleSheet.create({
+    content: {
+      flex: 1
+    }
+  });
+},747,[1,561,19,20,27,30,33,47,200,2],"node_modules\\react-native-scrollviewpager\\lib\\ViewPager.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _react = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[1], "react"));
+
+  var _reactNative = _$$_REQUIRE(_dependencyMap[2], "react-native");
+
+  var _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\node_modules\\react-native-scrollviewpager\\lib\\Touchable.js";
+
+  var Touchable = function Touchable(props) {
+    return _reactNative.Platform.OS === 'ios' ? _react.default.createElement(_reactNative.TouchableOpacity, {
+      disabled: props.disabled,
+      onPress: props.onPress,
+      onLongPress: props.onLongPress,
+      onLayout: props.onLayout,
+      activeOpacity: .8,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 15
+      }
+    }, _react.default.createElement(_reactNative.View, {
+      style: props.style,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      }
+    }, props.children)) : _react.default.createElement(_reactNative.TouchableNativeFeedback, {
+      delayPressIn: 50,
+      disabled: props.disabled,
+      onPress: props.onPress,
+      onLongPress: props.onLongPress,
+      onLayout: props.onLayout,
+      background: _reactNative.TouchableNativeFeedback.SelectableBackground(),
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 24
+      }
+    }, _react.default.createElement(_reactNative.View, {
+      style: props.style,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 31
+      }
+    }, props.children));
+  };
+
+  var _default = Touchable;
+  exports.default = _default;
+},748,[1,47,2],"node_modules\\react-native-scrollviewpager\\lib\\Touchable.js");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
@@ -111273,13 +112004,93 @@ __d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, e
     color: ['#16a085', '#f4d03f']
   }];
   exports.themesGradient = themesGradient;
-},744,[],"src\\pages\\Theme.js");
+},749,[],"src\\pages\\Theme.js");
 __d(function(global, require, _aUnused, _bUnused, module, exports, _cUnused) {
   module.exports = {
   "name": "movie",
   "displayName": "movie"
 };
-},745,[],"app.json");
+},750,[],"app.json");
+__d(function (global, _$$_REQUIRE, _$$_IMPORT_DEFAULT, _$$_IMPORT_ALL, module, exports, _dependencyMap) {
+  var _interopRequireDefault = _$$_REQUIRE(_dependencyMap[0], "@babel/runtime/helpers/interopRequireDefault");
+
+  var _interopRequireWildcard = _$$_REQUIRE(_dependencyMap[1], "@babel/runtime/helpers/interopRequireWildcard");
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _classCallCheck2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[2], "@babel/runtime/helpers/classCallCheck"));
+
+  var _createClass2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[3], "@babel/runtime/helpers/createClass"));
+
+  var _possibleConstructorReturn2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[4], "@babel/runtime/helpers/possibleConstructorReturn"));
+
+  var _getPrototypeOf2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[5], "@babel/runtime/helpers/getPrototypeOf"));
+
+  var _inherits2 = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[6], "@babel/runtime/helpers/inherits"));
+
+  var React = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[7], "react"));
+
+  var _index = _interopRequireDefault(_$$_REQUIRE(_dependencyMap[8], "./../../node_modules/react-transform-hmr/lib/index.js"));
+
+  var RN = _interopRequireWildcard(_$$_REQUIRE(_dependencyMap[9], "react-native"));
+
+  var _jsxFileName = "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\src\\pages\\Home.js";
+  var _components = {
+    Home: {
+      displayName: "Home"
+    }
+  };
+
+  var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index.default)({
+    filename: "c:\\Users\\singcl.000\\Desktop\\rn-xmiles\\movie\\src\\pages\\Home.js",
+    components: _components,
+    locals: [module],
+    imports: [React.default]
+  });
+
+  function _wrapComponent(id) {
+    return function (Component) {
+      return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+  }
+
+  var Home = _wrapComponent("Home")(function (_React$PureComponent) {
+    (0, _inherits2.default)(Home, _React$PureComponent);
+
+    function Home(props) {
+      var _this;
+
+      (0, _classCallCheck2.default)(this, Home);
+      _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Home).call(this, props));
+      _this.state = {};
+      return _this;
+    }
+
+    (0, _createClass2.default)(Home, [{
+      key: "render",
+      value: function render() {
+        return React.createElement(RN.View, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 25
+          }
+        }, React.createElement(RN.Text, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          }
+        }, "ewew"));
+      }
+    }]);
+    return Home;
+  }(React.PureComponent));
+
+  var _default2 = Home;
+  exports.default = _default2;
+},751,[1,561,19,20,27,30,33,47,200,2],"src\\pages\\Home.js");
 __r(84);
 __r(0);
 //# sourceMappingURL=index.map

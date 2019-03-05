@@ -16,6 +16,9 @@ import { NavigationDrawerScreenOptions, NavigationScreenProps } from 'react-navi
 import Icon from 'react-native-vector-icons/Feather'
 
 import AppTop from './components/AppTop'
+import ScrollViewPagerRPC from './components/ScrollViewPager'
+
+import Home from './pages/Home'
 
 const tabList = [
     {
@@ -58,6 +61,10 @@ export default class Index extends PureComponent<NavigationScreenProps> {
                         <Icon name="search" size={20} color="#fff" />
                     </BorderlessButton>
                 </AppTop>
+
+                <ScrollViewPagerRPC themeColor={themeColor[0]}>
+                    <Home />
+                </ScrollViewPagerRPC>
             </View>
         )
     }
