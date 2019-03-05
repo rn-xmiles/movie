@@ -11,9 +11,12 @@
 
 import * as React from 'react'
 import * as RN from 'react-native'
+import { never } from 'rxjs'
 
-export default class Home extends React.PureComponent {
-    constructor(props) {
+type Props = {}
+type State = {}
+export default class Home extends React.PureComponent<Props, State> {
+    constructor(props: Props) {
         super(props)
         this.state = {
             //
@@ -23,7 +26,7 @@ export default class Home extends React.PureComponent {
     render() {
         return (
             <RN.View>
-                <RN.Text>ewew</RN.Text>
+                <RN.Button title="测试" onPress={() => never} />
             </RN.View>
         )
     }
