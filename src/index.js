@@ -20,25 +20,6 @@ import ScrollViewPagerRPC from './components/ScrollViewPager'
 
 import Home from './pages/Home'
 
-const tabList = [
-    {
-        type: 'movie',
-        name: '电影',
-    },
-    {
-        type: 'tv',
-        name: '电视剧',
-    },
-    {
-        type: 'comic',
-        name: '动漫',
-    },
-    {
-        type: 'variety',
-        name: '综艺',
-    },
-]
-
 type Props = {
     navigation: NavigationScreenProp,
     screenProps: {
@@ -69,7 +50,7 @@ export default class Index extends PureComponent<Props> {
                 </AppTop>
 
                 <ScrollViewPagerRPC themeColor={themeColor[0]}>
-                    <Home />
+                    <Home themeColor={themeColor} navigation={navigation} />
                 </ScrollViewPagerRPC>
             </View>
         )

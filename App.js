@@ -84,7 +84,7 @@ export default class Movie extends Component<Props, State> {
         themeColor: themesGradient[0].color,
     }
 
-    setTheme = (themeColor: Array<string>): any => {
+    setTheme = (themeColor: Array<string>): void => {
         this.setState({
             themeColor,
         })
