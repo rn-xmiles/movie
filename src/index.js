@@ -19,6 +19,7 @@ import AppTop from './components/AppTop'
 import ScrollViewPagerRPC from './components/ScrollViewPager'
 
 import Home from './pages/Home'
+import Screen from './pages/Screen'
 
 type Props = {
     navigation: NavigationScreenProp,
@@ -50,7 +51,11 @@ export default class Index extends PureComponent<Props> {
                 </AppTop>
 
                 <ScrollViewPagerRPC themeColor={themeColor[0]}>
-                    <Home themeColor={themeColor} navigation={navigation} />
+                    <Home tablabel="首页" themeColor={themeColor} navigation={navigation} />
+                    <Screen tablabel="电影" type="movie" />
+                    <Screen tablabel="电视剧" type="tv" />
+                    <Screen tablabel="动漫" type="comic" />
+                    <Screen tablabel="综艺" type="variety" />
                 </ScrollViewPagerRPC>
             </View>
         )

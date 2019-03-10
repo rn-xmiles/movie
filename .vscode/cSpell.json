@@ -5,7 +5,17 @@
     // language - current active spelling language
     "language": "en",
     // words - list of words to be always considered correct
-    "words": ["mkdirp", "singcl", "iambabyer", "gmail", "stylelint", "XPLATJSCOPYRIGHT1", "Borderless"],
+    "words": [
+        "mkdirp",
+        "singcl",
+        "iambabyer",
+        "gmail",
+        "stylelint",
+        "XPLATJSCOPYRIGHT1",
+        "Borderless",
+        "tablabel",
+        "swiper"
+    ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
     // For example "hte" should be "the"
