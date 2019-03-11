@@ -70,7 +70,7 @@ export default class Home extends React.PureComponent<Props, State> {
 
     componentDidMount() {
         this.mounted = true
-        // this.getHomeData()
+        this.getHomeData()
     }
 
     componentWillUnmount() {

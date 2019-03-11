@@ -28,6 +28,12 @@ class SwiperConf extends React.Component<Props> {
         if (loading) {
             return <Loading style={styles.item} size="small" themeColor={themeColor} />
         }
+
+        return (
+            <View>
+                <Text>{data}</Text>
+            </View>
+        )
     }
 }
 
