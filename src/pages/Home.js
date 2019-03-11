@@ -17,6 +17,8 @@ import LinearGradient from 'react-native-linear-gradient'
 
 import Swiper from './../components/Swiper'
 
+import { GetHomeData } from './../api/index'
+
 const { UIManager } = RN.NativeModules
 
 const maps = [
@@ -55,6 +57,8 @@ type State = {
     data: any,
 }
 export default class Home extends React.PureComponent<Props, State> {
+    mounted: boolean
+
     constructor(props: Props) {
         super(props)
         this.state = {
@@ -62,6 +66,27 @@ export default class Home extends React.PureComponent<Props, State> {
             data: {},
         }
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
+    }
+
+    componentDidMount() {
+        this.mounted = true
+        // this.getHomeData()
+    }
+
+    componentWillUnmount() {
+        this.mounted = false
+    }
+
+    // 获取首页数据
+    getHomeData = async () => {
+        const data = await GetHomeData()
+        if (this.mounted) {
+            RN.LayoutAnimation.easeInEaseOut()
+            this.setState({
+                data,
+                loading: false,
+            })
+        }
     }
 
     render() {
