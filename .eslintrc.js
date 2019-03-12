@@ -42,5 +42,6 @@ module.exports = {
         quotes: ['error', 'single'],
         semi: ['error', 'never'],
         'max-len': ['error', { code: 120, tabWidth: 4, comments: 150 }],
+        'no-console': ['warn'],
     },
 }
