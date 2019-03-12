@@ -18,57 +18,69 @@ const WEB = 'https://www.kankanwu.com'
  * @param {String} s 图片的src值
  * @param {String} m 常量 WEB_M
  */
-const getHref: (string, string) => string = (s, m) => (s.includes('//') ? `https:${s}` : `${m}${s}`)
+const getHref: (s: string, m: string) => string = (s, m) => (s.includes('//') ? `https:${s}` : `${m}${s}`)
 
 /**
  * cheerio DOM解析获取数据
  */
-const GetHomeData = async () => {
-    const html = await fetch(WEB).then((r) => r.text())
-    const $ = cheerio.load(html)
-    const banner = $('.focusList > li')
-        .map((index, element) => ({
-            ID: $(element)
-                .find('a')
-                .attr('href'),
-            Name: $(element)
-                .find('.sTxt')
-                .text(),
-            Cover: getHref(
-                $(element)
-                    .find('img')
-                    .attr('src'),
-                WEB_M
-            ),
-        }))
-        .get()
+export const GetHomeData = async () => {
+    let response
 
-    const list = (index: number) => {
-        const data = $('.all_tab>.list_tab_img')
-            .eq(index)
-            .find('li')
-            .map((i, elem) => ({
-                ID: $(elem)
+    // 网络请求异常捕获
+    try {
+        response = await fetch(WEB_M)
+    } catch (err) {
+        return Promise.reject(err)
+    }
+
+    const html = await response.text()
+    const $ = cheerio.load(html)
+    const banner = $('.focusList>li')
+        .map((i, item) => {
+            return {
+                ID: $(item)
                     .find('a')
                     .attr('href'),
                 Cover: getHref(
-                    $(elem)
+                    $(item)
                         .find('img')
                         .attr('src'),
                     WEB_M
                 ),
-                Name: $(elem)
-                    .find('a')
-                    .attr('title'),
-                MovieTitle: $(elem)
-                    .find('.title')
+                Name: $(item)
+                    .find('.sTxt')
                     .text(),
-                Score: $(elem)
-                    .find('.score')
-                    .text(),
-            }))
-            .get()
+            }
+        })
+        .get()
 
+    const list = (index) => {
+        const data = $('.all_tab>.list_tab_img')
+            .eq(index)
+            .find('li')
+            .map((i, item) => {
+                return {
+                    ID: $(item)
+                        .find('a')
+                        .attr('href'),
+                    Cover: getHref(
+                        $(item)
+                            .find('img')
+                            .attr('src'),
+                        WEB_M
+                    ),
+                    Name: $(item)
+                        .find('a')
+                        .attr('title'),
+                    MovieTitle: $(item)
+                        .find('.title')
+                        .text(),
+                    Score: $(item)
+                        .find('.score')
+                        .text(),
+                }
+            })
+            .get()
         return data
     }
 
@@ -97,6 +109,3 @@ const GetHomeData = async () => {
     }
     return result
 }
-
-//
-export { GetHomeData }

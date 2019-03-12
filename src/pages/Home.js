@@ -79,7 +79,14 @@ export default class Home extends React.PureComponent<Props, State> {
 
     // 获取首页数据
     getHomeData = async () => {
-        const data = await GetHomeData()
+        let data
+        try {
+            data = await GetHomeData()
+        } catch (err) {
+            console.warn(err)
+            return
+        }
+
         if (this.mounted) {
             RN.LayoutAnimation.easeInEaseOut()
             this.setState({
@@ -94,7 +101,12 @@ export default class Home extends React.PureComponent<Props, State> {
         const { navigation, themeColor } = this.props
         return (
             <RN.ScrollView style={styles.content}>
-                <Swiper loading={loading} navigation={navigation} themeColor={themeColor[0]} data={data} />
+                <Swiper
+                    loading={loading}
+                    navigation={navigation}
+                    themeColor={themeColor[0]}
+                    data={data.solling && data.solling.list}
+                />
                 <RN.View style={styles.links} />
                 <RN.Text>TEXT</RN.Text>
             </RN.ScrollView>

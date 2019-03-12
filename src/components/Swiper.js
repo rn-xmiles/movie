@@ -10,16 +10,21 @@
  */
 
 import * as React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 
+import Swiper from 'react-native-swiper'
 import Loading from './Loading'
 
 type Props = {
     loading: boolean,
     themeColor: string,
     navigation: NavigationScreenProp,
-    data: any,
+    data: Array<{
+        Name: string,
+        Cover: string,
+        ID: string,
+    }>,
 }
 
 class SwiperConf extends React.Component<Props> {
@@ -30,9 +35,31 @@ class SwiperConf extends React.Component<Props> {
         }
 
         return (
-            <View>
-                <Text>{data}</Text>
-            </View>
+            <Swiper
+                style={styles.wrap}
+                autoplay={true}
+                paginationStyle={{ bottom: 30, right: 10, justifyContent: 'flex-end' }}
+                dotColor="rgba(252,255,255,.7)"
+                dotStyle={{ width: 6, height: 6 }}
+                activeDotStyle={{ width: 8, height: 8 }}
+                activeDotColor={themeColor}
+            >
+                {data.map((item, index) => (
+                    <TouchableOpacity key={index} activeOpacity={0.9} style={styles.item}>
+                        <ImageBackground
+                            style={styles.bg}
+                            resizeMode="cover"
+                            blurRadius={5}
+                            source={{ uri: item.Cover }}
+                        >
+                            <Image style={styles.itemImg} source={{ uri: item.Cover }} />
+                            <View style={styles.itemInfo}>
+                                <Text style={styles.title}>{item.Name}</Text>
+                            </View>
+                        </ImageBackground>
+                    </TouchableOpacity>
+                ))}
+            </Swiper>
         )
     }
 }
@@ -40,11 +67,36 @@ class SwiperConf extends React.Component<Props> {
 export default SwiperConf
 
 const styles = StyleSheet.create({
+    wrap: {
+        height: 200,
+    },
+
     item: {
         height: 200,
         //margin:5,
         //borderRadius:5,
         overflow: 'hidden',
         backgroundColor: '#f1f1f1',
+    },
+    bg: {
+        flex: 1,
+        padding: 20,
+        alignItems: 'center',
+    },
+
+    itemImg: {
+        width: 180,
+        height: (180 * 180) / 447,
+        borderRadius: 3,
+    },
+
+    itemInfo: {
+        flex: 1,
+        paddingLeft: 10,
+    },
+    title: {
+        marginTop: 10,
+        color: '#fff',
+        fontSize: 16,
     },
 })
