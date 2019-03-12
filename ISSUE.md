@@ -117,3 +117,13 @@ public class MainActivity extends ReactActivity {
 
 OK.
 @see react-native-gesture-handler 文档： https://kmagiera.github.io/react-native-gesture-handler/docs/getting-started.html
+
+### 6
+
+RN 中使用 cherrio 一定是要 **v0.22.0**
+
+```sh
+yarn add cheerio@0.22.0
+```
+
+@see https://www.jianshu.com/p/ddf574337c47
