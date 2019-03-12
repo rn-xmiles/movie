@@ -22,11 +22,11 @@ import { GetHomeData } from './../api/index'
 const { UIManager } = RN.NativeModules
 
 const maps = [
-    {
-        listType: 'solling',
-        name: '轮播图',
-        isRender: true,
-    },
+    // {
+    //     listType: 'solling',
+    //     name: '轮播图',
+    //     isRender: true,
+    // },
     {
         listType: 'movie',
         name: '电影',
@@ -107,8 +107,22 @@ export default class Home extends React.PureComponent<Props, State> {
                     themeColor={themeColor[0]}
                     data={data.solling && data.solling.list}
                 />
-                <RN.View style={styles.links} />
-                <RN.Text>TEXT</RN.Text>
+                <RN.View style={styles.links}>
+                    {maps.map((item, index) => (
+                        <RN.TouchableOpacity key={index} style={styles.linkItem}>
+                            <LinearGradient
+                                colors={themeColor.length > 1 ? themeColor : [...themeColor, ...themeColor]}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 0 }}
+                                style={styles.linkIcon}
+                            >
+                                <Icon name={item.icon} color="#fff" size={16} />
+                            </LinearGradient>
+                            <RN.Text style={styles.linkText}>{item.name}</RN.Text>
+                        </RN.TouchableOpacity>
+                    ))}
+                </RN.View>
+                <RN.Text>开发中...</RN.Text>
             </RN.ScrollView>
         )
     }
@@ -127,5 +141,24 @@ const styles = RN.StyleSheet.create({
         padding: 10,
         marginTop: -25,
         flexDirection: 'row',
+    },
+
+    linkItem: {
+        flex: 1,
+        alignItems: 'center',
+    },
+
+    linkIcon: {
+        width: 40,
+        height: 40,
+        borderRadius: 40,
+        backgroundColor: '#fff',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    linkText: {
+        marginTop: 5,
+        fontSize: 12,
     },
 })
