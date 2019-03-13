@@ -16,6 +16,8 @@ import Icon from 'react-native-vector-icons/Feather'
 import LinearGradient from 'react-native-linear-gradient'
 
 import Swiper from './../components/Swiper'
+import MovieTitle from './../components/MovieTitle'
+import MovieList from '../components/MovieList'
 
 import { GetHomeData } from './../api/index'
 
@@ -107,6 +109,7 @@ export default class Home extends React.PureComponent<Props, State> {
                     themeColor={themeColor[0]}
                     data={data.solling && data.solling.list}
                 />
+
                 <RN.View style={styles.links}>
                     {maps.map((item, index) => (
                         <RN.TouchableOpacity key={index} style={styles.linkItem}>
@@ -122,7 +125,22 @@ export default class Home extends React.PureComponent<Props, State> {
                         </RN.TouchableOpacity>
                     ))}
                 </RN.View>
-                <RN.Text>开发中...</RN.Text>
+
+                {maps.map((item, index) => (
+                    <React.Fragment key={index}>
+                        <MovieTitle title={item.name} themeColor={themeColor[0]} icon={item.icon} />
+                        <MovieList
+                            loading={loading}
+                            navigation={navigation}
+                            themeColor={themeColor[0]}
+                            data={data[item.listType] || {}}
+                            style={{ marginTop: -10 }}
+                            onEndReached={({ distanceFromEnd }) => {
+                                console.log(distanceFromEnd)
+                            }}
+                        />
+                    </React.Fragment>
+                ))}
             </RN.ScrollView>
         )
     }
