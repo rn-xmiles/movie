@@ -50,7 +50,7 @@ export default class MovieList extends React.Component<Props> {
             return <Loading style={{ height: 100 }} size="small" text="" themeColor={themeColor} />
         }
 
-        if (list.length !== 0) {
+        if (list.length === 0) {
             return <MovieEmpty content="空空如也~~" />
         }
 
