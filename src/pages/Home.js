@@ -18,6 +18,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import Swiper from './../components/Swiper'
 import MovieTitle from './../components/MovieTitle'
 import MovieList from '../components/MovieList'
+import MovieMoreBtn from '../components/details/MovieMoreBtn'
 
 import { GetHomeData } from './../api/index'
 
@@ -120,6 +121,11 @@ export default class Home extends React.PureComponent<Props, State> {
                             onEndReached={({ distanceFromEnd }) => {
                                 console.log(distanceFromEnd)
                             }}
+                        />
+                        <MovieMoreBtn
+                            show={!loading}
+                            text={`查看更多${item.name}`}
+                            onPress={() => console.log('查看更多Press')}
                         />
                     </React.Fragment>
                 ))}
