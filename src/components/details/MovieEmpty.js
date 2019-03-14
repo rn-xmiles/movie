@@ -12,6 +12,7 @@
 import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
+declare var $: any
 interface Props {
     content: string;
 }
@@ -27,6 +28,7 @@ export default MovieEmpty
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
+        height: ($.WIDTH - 40) / 2,
         justifyContent: 'center',
         alignItems: 'center',
     },
