@@ -21,6 +21,12 @@ const { UIManager } = NativeModules
 
 declare var $: any
 
+interface MovieCard {
+    Name: string;
+    Cover: string;
+    ID: string;
+}
+
 interface Props {
     loading: boolean;
     navigation: NavigationScreenProp;
@@ -30,7 +36,8 @@ interface Props {
     };
     data: {
         name: string,
-        list: Array<any>,
+        list: Array<MovieCard>,
+        icon: string,
     };
     onEndReached: (info: { distanceFromEnd: number }) => void;
 }

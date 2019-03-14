@@ -22,41 +22,24 @@ import MovieList from '../components/MovieList'
 import { GetHomeData } from './../api/index'
 
 const { UIManager } = RN.NativeModules
-
-const maps = [
-    // {
-    //     listType: 'solling',
-    //     name: '轮播图',
-    //     isRender: true,
-    // },
-    {
-        listType: 'movie',
-        name: '电影',
-        icon: 'film',
-    },
-    {
-        listType: 'tv',
-        name: '电视剧',
-        icon: 'tv',
-    },
-    {
-        listType: 'comic',
-        name: '动漫',
-        icon: 'gitlab',
-    },
-    {
-        listType: 'variety',
-        name: '娱乐',
-        icon: 'anchor',
-    },
-]
 type Props = {
     navigation: NavigationScreenProp,
     themeColor: string[],
 }
-type State = {
-    loading: boolean,
-    data: any,
+
+interface MovieCard {
+    Name: string;
+    Cover: string;
+    ID: string;
+}
+interface State {
+    loading: boolean;
+
+    data: Array<{
+        name: string,
+        icon: string,
+        list: Array<MovieCard>,
+    }>;
 }
 export default class Home extends React.PureComponent<Props, State> {
     mounted: boolean
@@ -65,7 +48,7 @@ export default class Home extends React.PureComponent<Props, State> {
         super(props)
         this.state = {
             loading: true,
-            data: {},
+            data: [],
         }
         UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true)
     }
@@ -101,17 +84,16 @@ export default class Home extends React.PureComponent<Props, State> {
     render() {
         const { loading, data } = this.state
         const { navigation, themeColor } = this.props
+
+        const banner = data[0]
+        const movies = data.slice(1, data.length)
+
         return (
             <RN.ScrollView style={styles.content}>
-                <Swiper
-                    loading={loading}
-                    navigation={navigation}
-                    themeColor={themeColor[0]}
-                    data={data.solling && data.solling.list}
-                />
+                <Swiper loading={loading} navigation={navigation} themeColor={themeColor[0]} data={banner} />
 
                 <RN.View style={styles.links}>
-                    {maps.map((item, index) => (
+                    {movies.map((item, index) => (
                         <RN.TouchableOpacity key={index} style={styles.linkItem}>
                             <LinearGradient
                                 colors={themeColor.length > 1 ? themeColor : [...themeColor, ...themeColor]}
@@ -126,14 +108,14 @@ export default class Home extends React.PureComponent<Props, State> {
                     ))}
                 </RN.View>
 
-                {maps.map((item, index) => (
+                {movies.map((item, index) => (
                     <React.Fragment key={index}>
                         <MovieTitle title={item.name} themeColor={themeColor[0]} icon={item.icon} />
                         <MovieList
                             loading={loading}
                             navigation={navigation}
                             themeColor={themeColor[0]}
-                            data={data[item.listType] || {}}
+                            data={item}
                             style={{ marginTop: -10 }}
                             onEndReached={({ distanceFromEnd }) => {
                                 console.log(distanceFromEnd)

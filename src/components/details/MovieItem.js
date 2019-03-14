@@ -28,7 +28,9 @@ const MovieItem = ({ item, navigation }: Props): React.Node => (
     <TouchableOpacity style={styles.wrapper}>
         <Image style={styles.movieImg} source={{ uri: item.Cover || 'http' }} />
         <View style={styles.movieText}>
-            <Text style={styles.movieName}>{item.Name}</Text>
+            <Text numberOfLines={1} style={styles.movieName}>
+                {item.Name}
+            </Text>
         </View>
     </TouchableOpacity>
 )

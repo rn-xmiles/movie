@@ -85,27 +85,33 @@ export const GetHomeData = async () => {
     }
 
     // 最终数据
-    const result = {
-        solling: {
+    const result = [
+        {
             name: '轮播图',
             list: banner,
+            icon: 'solling',
         },
-        movie: {
+        {
             name: '电影',
             list: list(0),
+            icon: 'film',
         },
-        tv: {
+        {
             name: '电视剧',
             list: list(1),
+            icon: 'tv',
         },
-        comic: {
+        {
             name: '动漫',
             list: list(2),
+            icon: 'gitlab',
         },
-        variety: {
+        {
             name: '娱乐',
             list: list(3),
+            icon: 'anchor',
         },
-    }
+    ]
+
     return result
 }

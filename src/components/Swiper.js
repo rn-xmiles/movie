@@ -16,15 +16,21 @@ import { NavigationScreenProp } from 'react-navigation'
 import Swiper from 'react-native-swiper'
 import Loading from './Loading'
 
+interface MovieCard {
+    Name: string;
+    Cover: string;
+    ID: string;
+}
+
 type Props = {
     loading: boolean,
     themeColor: string,
     navigation: NavigationScreenProp,
-    data: Array<{
-        Name: string,
-        Cover: string,
-        ID: string,
-    }>,
+    data: {
+        name: string,
+        icon: string,
+        list: Array<MovieCard>,
+    },
 }
 
 class SwiperConf extends React.Component<Props> {
@@ -44,7 +50,7 @@ class SwiperConf extends React.Component<Props> {
                 activeDotStyle={{ width: 8, height: 8 }}
                 activeDotColor={themeColor}
             >
-                {data.map((item, index) => (
+                {data.list.map((item, index) => (
                     <TouchableOpacity key={index} activeOpacity={0.9} style={styles.item}>
                         <ImageBackground
                             style={styles.bg}
