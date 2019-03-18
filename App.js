@@ -44,11 +44,11 @@ const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
 
 const Drawer = createDrawerNavigator(
     {
-        Index: Index,
-        History: History,
-        Collection: Collection,
-        Theme: Theme,
-        Settings: Settings,
+        Index: Index, // 首页
+        History: History, // 历史记录
+        Collection: Collection, // 收藏
+        Theme: Theme, // 主题
+        Settings: Settings, // 设置
     },
     DrawerNavigatorConfig
 )
