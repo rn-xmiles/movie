@@ -8,6 +8,10 @@
  * @author singcl <iambabyer@gmail.com>
  * @see https://github.com/singcl
  */
+import React from 'react'
+import { View, Text } from 'react-native'
+import Icon from 'react-native-vector-icons/Feather'
+import { NavigationDrawerScreenOptions } from 'react-navigation'
 
 export const themes = [
     {
@@ -88,3 +92,22 @@ export const themesGradient: Array<{ color: Array<string> }> = [
         color: ['#16a085', '#f4d03f'],
     },
 ]
+
+type Props = {}
+export default class Theme extends React.PureComponent<Props> {
+    static navigationOptions: NavigationDrawerScreenOptions = {
+        drawerLabel: '主题',
+        drawerIcon: ({ tintColor }) => <Icon name="feather" size={18} color={tintColor} />,
+    }
+    constructor(props: Props) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <View>
+                <Text>主题</Text>
+            </View>
+        )
+    }
+}

@@ -29,6 +29,10 @@ import {
 // pages/Screen
 import ProfileScreen from './src/pages/ProfileScreen'
 import Index from './src/index'
+import History from './src/pages/History'
+import Collection from './src/pages/Collection'
+import Theme from './src/pages/Theme'
+import Settings from './src/pages/Settings'
 
 // theme
 import { themesGradient } from './src/pages/Theme'
@@ -38,7 +42,16 @@ const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
     drawerWidth: $.WIDTH * 0.7,
 }
 
-const Drawer = createDrawerNavigator({ Index: Index }, DrawerNavigatorConfig)
+const Drawer = createDrawerNavigator(
+    {
+        Index: Index,
+        History: History,
+        Collection: Collection,
+        Theme: Theme,
+        Settings: Settings,
+    },
+    DrawerNavigatorConfig
+)
 
 // StackNavigator config配置
 const StackNavigatorConfig: IStackNavigatorConfig = {
