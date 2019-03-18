@@ -11,7 +11,8 @@
 
 import * as React from 'react'
 import { View, StyleSheet, FlatList, NativeModules } from 'react-native'
-import { NavigationScreenProp } from 'react-navigation'
+// Announcing Import Type @see: https://flow.org/blog/2015/02/18/Import-Types/
+import type { NavigationScreenProp } from 'react-navigation'
 
 import Loading from './Loading'
 import MovieEmpty from './details/MovieEmpty'
