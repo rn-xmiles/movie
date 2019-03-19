@@ -22,6 +22,9 @@ import {
     createAppContainer,
     createStackNavigator,
     createDrawerNavigator,
+} from 'react-navigation'
+
+import type {
     StackNavigatorConfig as IStackNavigatorConfig, // Interface StackNavigatorConfig 接口
     DrawerNavigatorConfig as IDrawerNavigatorConfig, // Interface DrawerNavigatorConfig 接口
 } from 'react-navigation'
