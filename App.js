@@ -18,16 +18,14 @@ import React, { Component } from 'react'
 import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator'
 
 // import { Text, View } from 'react-native'
-import {
-    createAppContainer,
-    createStackNavigator,
-    createDrawerNavigator,
-} from 'react-navigation'
+import { createAppContainer, createStackNavigator, createDrawerNavigator } from 'react-navigation'
 
 import type {
     StackNavigatorConfig as IStackNavigatorConfig, // Interface StackNavigatorConfig 接口
     DrawerNavigatorConfig as IDrawerNavigatorConfig, // Interface DrawerNavigatorConfig 接口
 } from 'react-navigation'
+
+import Provider from './store/context'
 
 // pages/Screen
 import ProfileScreen from './src/pages/ProfileScreen'
@@ -36,6 +34,7 @@ import History from './src/pages/History'
 import Collection from './src/pages/Collection'
 import Theme from './src/pages/Theme'
 import Settings from './src/pages/Settings'
+import DrawerContentComponent from './src/pages/DrawerContentComponent'
 
 // theme
 import { themesGradient } from './src/pages/Theme'
@@ -43,6 +42,8 @@ import { themesGradient } from './src/pages/Theme'
 // DrawerNavigator config 配置
 const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
     drawerWidth: $.WIDTH * 0.7,
+    drawerType: 'back',
+    contentComponent: DrawerContentComponent,
 }
 
 const Drawer = createDrawerNavigator(
@@ -109,6 +110,10 @@ export default class Movie extends Component<Props, State> {
     render() {
         const { themeColor } = this.state
 
-        return <AppContainer screenProps={{ themeColor, setTheme: this.setTheme }} />
+        return (
+            <Provider>
+                <AppContainer screenProps={{ themeColor, setTheme: this.setTheme }} />
+            </Provider>
+        )
     }
 }
