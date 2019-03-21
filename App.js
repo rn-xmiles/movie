@@ -26,6 +26,7 @@ import type {
 } from 'react-navigation'
 
 import Provider from './store/context'
+import Storage from './store/storage'
 
 // pages/Screen
 import ProfileScreen from './src/pages/ProfileScreen'
@@ -103,6 +104,9 @@ export default class Movie extends Component<Props, State> {
 
     setTheme = (themeColor: Array<string>): void => {
         this.setState({
+            themeColor,
+        })
+        Storage.save('themeColor', {
             themeColor,
         })
     }
