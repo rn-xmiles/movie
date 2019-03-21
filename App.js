@@ -17,7 +17,7 @@ import './utils/global'
 import React, { Component } from 'react'
 import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator'
 
-// import { Text, View } from 'react-native'
+import { /* Text, View */ StatusBar } from 'react-native'
 import { createAppContainer, createStackNavigator, createDrawerNavigator } from 'react-navigation'
 
 import type {
@@ -116,6 +116,7 @@ export default class Movie extends Component<Props, State> {
 
         return (
             <Provider>
+                <StatusBar translucent={true} backgroundColor="transparent" />
                 <AppContainer screenProps={{ themeColor, setTheme: this.setTheme }} />
             </Provider>
         )
