@@ -1,41 +1,57 @@
 {
-  "name": "movie",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
-  },
-  "dependencies": {
-    "buffer": "^5.2.1",
-    "cheerio": "0.22.0",
-    "events": "^3.0.0",
-    "react": "16.6.3",
-    "react-native": "0.58.6",
-    "react-native-linear-gradient": "^2.5.3",
-    "react-native-scrollviewpager": "^1.0.3",
-    "react-native-swiper": "^1.5.14",
-    "react-native-vector-icons": "^6.3.0",
-    "react-navigation": "^3.3.2",
-    "stream": "^0.0.2",
-    "util": "^0.11.1"
-  },
-  "devDependencies": {
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "24.1.0",
-    "eslint": "^5.14.1",
-    "eslint-plugin-flowtype": "^3.4.2",
-    "eslint-plugin-react": "^7.12.4",
-    "flow-bin": "^0.95.1",
-    "jest": "24.1.0",
-    "metro-react-native-babel-preset": "0.53.0",
-    "react-test-renderer": "16.6.3",
-    "stylelint": "^9.10.1",
-    "stylelint-config-react-native-css-modules": "^2.1.0",
-    "stylelint-react-native": "^2.0.1"
-  },
-  "jest": {
-    "preset": "react-native"
-  }
+    "name": "movie",
+    "version": "0.0.1",
+    "private": true,
+    "description": "A modernal movie application writting with React Native",
+    "summary": "from singcl",
+    "keywords": ["movie", "film", "RN", "react", "react-native", "react-navigation"],
+    "scripts": {
+        "start": "node node_modules/react-native/local-cli/cli.js start",
+        "test": "jest"
+    },
+    "author": {
+        "name": "singcl",
+        "email": "iambabyer@gmail.com",
+        "url": "https://github.com/singcl"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rn-xmiles/movie"
+    },
+    "bugs": {
+        "url": "https://github.com/rn-xmiles/movie/issues"
+    },
+    "license": "BSD-3-Clause",
+    "dependencies": {
+        "buffer": "^5.2.1",
+        "cheerio": "0.22.0",
+        "events": "^3.0.0",
+        "react": "16.6.3",
+        "react-native": "0.58.6",
+        "react-native-linear-gradient": "^2.5.3",
+        "react-native-scrollviewpager": "^1.0.3",
+        "react-native-swiper": "^1.5.14",
+        "react-native-vector-icons": "^6.3.0",
+        "react-navigation": "^3.3.2",
+        "stream": "^0.0.2",
+        "util": "^0.11.1"
+    },
+    "devDependencies": {
+        "babel-core": "7.0.0-bridge.0",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "24.1.0",
+        "eslint": "^5.14.1",
+        "eslint-plugin-flowtype": "^3.4.2",
+        "eslint-plugin-react": "^7.12.4",
+        "flow-bin": "^0.95.1",
+        "jest": "24.1.0",
+        "metro-react-native-babel-preset": "0.53.0",
+        "react-test-renderer": "16.6.3",
+        "stylelint": "^9.10.1",
+        "stylelint-config-react-native-css-modules": "^2.1.0",
+        "stylelint-react-native": "^2.0.1"
+    },
+    "jest": {
+        "preset": "react-native"
+    }
 }
