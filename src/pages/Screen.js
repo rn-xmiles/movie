@@ -11,6 +11,7 @@
 
 import * as React from 'react'
 import { View, Text, StyleSheet, NativeModules, InteractionManager } from 'react-native'
+import { GetPageList } from './../api/index'
 
 import Loading from '../components/Loading'
 

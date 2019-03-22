@@ -3,3 +3,5 @@
 @see: https://github.com/flow-typed/flow-typed
 
 @see: https://flow.org/en/docs/libdefs/
+
+### LICENSE BSD-3-Clause
