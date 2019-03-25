@@ -98,7 +98,7 @@ export default class Screen extends React.PureComponent<Props, State> {
                 {isRender ? (
                     <MovieList
                         style={{ paddingHorizontal: 5 }}
-                        isRender={true}
+                        loading={false}
                         ListFooterComponent={this.ListFooterComponent}
                         data={movies}
                         navigation={navigation}
