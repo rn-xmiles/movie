@@ -10,16 +10,16 @@
  */
 
 import React, { PureComponent } from 'react'
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { View, /* Text, Button, */ StyleSheet } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
-import { NavigationDrawerScreenOptions, NavigationScreenProp } from 'react-navigation'
+import type { NavigationDrawerScreenOptions, NavigationScreenProp } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Feather'
 
 import AppTop from './components/AppTop'
 import ScrollViewPagerRPC from './components/ScrollViewPager'
 
 import Home from './pages/Home'
-import Screen from './pages/Screen'
+import CommonTab from './pages/CommonTab'
 
 type Props = {
     navigation: NavigationScreenProp,
@@ -52,10 +52,10 @@ export default class Index extends PureComponent<Props> {
 
                 <ScrollViewPagerRPC themeColor={themeColor[0]}>
                     <Home tablabel="首页" themeColor={themeColor} navigation={navigation} />
-                    <Screen tablabel="电影" type="movie" />
-                    <Screen tablabel="电视剧" type="tv" />
-                    <Screen tablabel="动漫" type="comic" />
-                    <Screen tablabel="综艺" type="variety" />
+                    <CommonTab tablabel="电影" type="movie" navigation={navigation} themeColor={themeColor} />
+                    <CommonTab tablabel="电视剧" type="tv" navigation={navigation} themeColor={themeColor} />
+                    <CommonTab tablabel="动漫" type="comic" navigation={navigation} themeColor={themeColor} />
+                    <CommonTab tablabel="综艺" type="variety" navigation={navigation} themeColor={themeColor} />
                 </ScrollViewPagerRPC>
             </View>
         )
