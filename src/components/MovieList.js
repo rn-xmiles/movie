@@ -50,7 +50,7 @@ export default class MovieList extends React.Component<Props> {
     }
 
     render() {
-        const { data, loading, themeColor, style, navigation, onEndReached } = this.props
+        const { data, loading, themeColor, style, navigation, onEndReached, ListFooterComponent } = this.props
         const { /* name,  */ list = [] } = data
         const height = ($.WIDTH - 40) / 2 + 40
 
@@ -73,7 +73,7 @@ export default class MovieList extends React.Component<Props> {
                 ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
                 keyExtractor={(item) => item.ID.toString()}
                 getItemLayout={(data, index) => ({ length: height, offset: height * index, index })}
-                // ListFooterComponent={this.renderFooter}
+                ListFooterComponent={ListFooterComponent ? <ListFooterComponent /> : null}
             />
         )
     }

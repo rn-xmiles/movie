@@ -115,3 +115,82 @@ export const GetHomeData = async () => {
 
     return result
 }
+
+interface Params {
+    pageSize: number;
+    pageIndex: number;
+    Type: string;
+    Status: string;
+    Area: string;
+    Plot: string;
+    Year: string;
+    orderBy: 'addtime' | 'hits' | 'gold';
+}
+
+/**
+ * 获取电影列表
+ *
+ * orderBy：'addtime' | 'hits' | 'gold'
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-${Type}-mcid-${Plot}-lz-${Status}-area-${Area}-year-${Year}-letter--order-${orderBy}-picm-1-p-${pageIndex}.html
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-4-mcid-16-lz-2-area-%E5%A4%A7%E9%99%86-year-2018-letter--order-addtime-picm-1-p-1.html
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-3-mcid-59-lz-1-area-%E5%A4%A7%E9%99%86-year-2018-letter--order-hits-picm-1-p-2.html
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-3-mcid-59-lz-2-area-%E5%A4%A7%E9%99%86-year-2018-letter--order-hits-picm-1-p-2.html
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-1-mcid-8-lz--area-%E5%A4%A7%E9%99%86-year-2018-letter--order-addtime-picm-1-p-1.html
+ * https://www.kankanwu.com/index.php?s=Showlist-show-id-2-mcid-133-lz-1-area-%E5%A4%A7%E9%99%86-year-2018-letter--order-addtime-picm-1-p-1.html
+ * https://m.kankanwu.com/Animation/index_1_______1.html
+ * https://m.kankanwu.com/Comedy/index_1_58_2_2018__hits_%E5%A4%A7%E9%99%86_1.html
+ * https://m.kankanwu.com/Comedy/index_1_58_2_2018__hits_%E6%97%A5%E6%9C%AC_1.html
+ * https://m.kankanwu.com/Comedy/index_1_58__2018__hits_%E5%A4%A7%E9%99%86_1.html
+ * https://m.kankanwu.com/Comedy/index_1_28_2_2019__hits_%E5%A4%A7%E9%99%86_1.html
+ * https://m.kankanwu.com/${Type}/index_${pageIndex}_${Plot}_${Status}_${Year}__${orderBy}_${Area}_1.html
+ * https://m.kankanwu.com/${Type}/index_${pageIndex}_${Plot}__${Year}__${orderBy}_${Area}_1.html
+ * const html = await fetch(WEBM+`/${Type}/index_${pageIndex}_${Plot}_${Status}_${Year}__${orderBy}_${Area}_1.html`).then(d=>d.text());
+ * @param { Params } params
+ */
+export const getPageList = async (params: Params) => {
+    const mapType = {
+        movie: 1,
+        tv: 2,
+        comic: 3,
+        variety: 4,
+    }
+
+    const {
+        // pageSize = 25,
+        pageIndex = 1,
+        Type = '',
+        Status = '',
+        Area = '',
+        Plot = '',
+        Year = '',
+        orderBy = 'hits',
+    } = params
+    // 网络请求异常捕获
+    let response
+    try {
+        const url =
+            WEB +
+            `/index.php?s=Showlist-show-id-${
+                mapType[Type]
+            }-mcid-${Plot}-lz-${Status}-area-${Area}-year-${Year}-letter--order-${orderBy}-picm-1-p-${pageIndex}.html`
+        response = await fetch(url)
+    } catch (err) {
+        return Promise.reject(err)
+    }
+
+    const html = await response.text()
+    const $ = cheerio.load(html)
+    const data = $('#contents li').map((i, el) => {
+        const video = $(el).find('a')
+        return {
+            ID: video.attr('href'),
+            Name: video.find('img').attr('alt'),
+            MovieTitle: $(el)
+                .find('.state')
+                .text(),
+            Cover: getHref(video.find('img').attr('src'), WEB),
+        }
+    }).get()
+
+    return data
+}
