@@ -158,7 +158,7 @@ export const getPageList = async (params: Params) => {
     const {
         // pageSize = 25,
         pageIndex = 1,
-        Type = '',
+        Type = 'movie',
         Status = '',
         Area = '',
         Plot = '',
