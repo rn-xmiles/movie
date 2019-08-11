@@ -11,7 +11,13 @@
 
 import * as React from 'react'
 import * as RN from 'react-native'
-import { NavigationScreenProp } from 'react-navigation'
+import type {
+    // NavigationDrawerScreenOptions,
+    // NavigationNavigatorProps,
+    // NavigationScreenConfig,
+    NavigationRoute,
+    NavigationScreenProp
+} from 'react-navigation'
 import Icon from 'react-native-vector-icons/Feather'
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -24,7 +30,7 @@ import { GetHomeData } from './../api/index'
 
 const { UIManager } = RN.NativeModules
 type Props = {
-    navigation: NavigationScreenProp,
+    navigation: NavigationScreenProp<NavigationRoute>,
     themeColor: string[],
 }
 

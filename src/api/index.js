@@ -117,14 +117,14 @@ export const GetHomeData = async () => {
 }
 
 interface Params {
-    pageSize: number;
+    pageSize?: number;
     pageIndex: number;
     Type: string;
-    Status: string;
-    Area: string;
-    Plot: string;
-    Year: string;
-    orderBy: 'addtime' | 'hits' | 'gold';
+    Status?: string;
+    Area?: string;
+    Plot?: string;
+    Year?: string;
+    orderBy?: 'addtime' | 'hits' | 'gold';
 }
 
 /**

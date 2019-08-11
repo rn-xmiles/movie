@@ -10,9 +10,10 @@
  */
 
 import * as React from 'react'
+import type { StatelessFunctionalComponent } from 'react'
 import { View, StyleSheet, FlatList, NativeModules } from 'react-native'
 // Announcing Import Type @see: https://flow.org/blog/2015/02/18/Import-Types/
-import type { NavigationScreenProp } from 'react-navigation'
+import type { NavigationScreenProp, NavigationRoute } from 'react-navigation'
 
 import Loading from './Loading'
 import MovieEmpty from './details/MovieEmpty'
@@ -28,18 +29,19 @@ interface MovieCard {
     ID: string;
 }
 
+type Style = { paddingHorizontal?: number, marginTop?: number }
+
 interface Props {
     loading: boolean;
-    navigation: NavigationScreenProp;
+    navigation: NavigationScreenProp<NavigationRoute>;
     themeColor: string;
-    style: {
-        marginTop: number,
-    };
+    style: Style;
     data: {
         name: string,
         list: Array<MovieCard>,
         icon: string,
     };
+    ListFooterComponent?: StatelessFunctionalComponent<{}>;
     onEndReached: (info: { distanceFromEnd: number }) => void;
 }
 

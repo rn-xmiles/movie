@@ -10,8 +10,8 @@
  */
 
 import * as React from 'react'
-import { View, Text, StyleSheet, NativeModules, InteractionManager, LayoutAnimation } from 'react-native'
-import type { /* NavigationDrawerScreenOptions, */ NavigationScreenProp } from 'react-navigation'
+import { View, /* Text */ StyleSheet, NativeModules, InteractionManager, LayoutAnimation } from 'react-native'
+import type { /* NavigationDrawerScreenOptions, */ NavigationScreenProp, NavigationRoute } from 'react-navigation'
 import { getPageList } from '../api/index'
 
 import Loading from '../components/Loading'
@@ -23,7 +23,7 @@ const { UIManager } = NativeModules
 type Props = {
     tablabel: string,
     type: string,
-    navigation: NavigationScreenProp,
+    navigation: NavigationScreenProp<NavigationRoute>,
     themeColor: Array<string>,
 }
 type State = {
@@ -91,7 +91,7 @@ export default class Screen extends React.PureComponent<Props, State> {
         const movies = {
             name: tablabel,
             icon: type,
-            list: data
+            list: data,
         }
         return (
             <View style={styles.container}>
