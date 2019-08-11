@@ -9,14 +9,22 @@
  * @see https://github.com/singcl
  */
 
-import React from 'react'
+import * as React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
-import type { NavigationDrawerScreenOptions } from 'react-navigation'
+import type {
+    NavigationDrawerScreenOptions,
+    // NavigationNavigatorProps,
+    NavigationScreenConfig,
+    // NavigationRoute,
+    // NavigationScreenProp
+} from 'react-navigation'
 
+type Options = NavigationDrawerScreenOptions
 type Props = {}
+
 export default class History extends React.PureComponent<Props> {
-    static navigationOptions: NavigationDrawerScreenOptions = {
+    static navigationOptions: /* NavigationDrawerScreenOptions */ NavigationScreenConfig<Options> = {
         drawerLabel: '历史记录',
         drawerIcon: ({ tintColor }) => <Icon name="clock" size={18} color={tintColor} />,
     }

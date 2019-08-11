@@ -12,11 +12,19 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
-import { NavigationDrawerScreenOptions } from 'react-navigation'
+import type {
+    NavigationDrawerScreenOptions,
+    // NavigationNavigatorProps,
+    NavigationScreenConfig,
+    // NavigationRoute,
+    // NavigationScreenProp
+} from 'react-navigation'
 
+type Options = NavigationDrawerScreenOptions
 type Props = {}
+
 export default class Settings extends React.PureComponent<Props> {
-    static navigationOptions: NavigationDrawerScreenOptions = {
+    static navigationOptions: NavigationScreenConfig<Options> = {
         drawerLabel: '设置',
         drawerIcon: ({ tintColor }) => <Icon name="settings" size={18} color={tintColor} />,
     }

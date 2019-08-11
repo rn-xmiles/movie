@@ -12,7 +12,13 @@
 import React, { PureComponent } from 'react'
 import { View, /* Text, Button, */ StyleSheet } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
-import type { NavigationDrawerScreenOptions, NavigationScreenProp } from 'react-navigation'
+import type {
+    NavigationDrawerScreenOptions,
+    // NavigationNavigatorProps,
+    NavigationScreenConfig,
+    NavigationRoute,
+    NavigationScreenProp
+} from 'react-navigation'
 import Icon from 'react-native-vector-icons/Feather'
 
 import AppTop from './components/AppTop'
@@ -21,14 +27,16 @@ import ScrollViewPagerRPC from './components/ScrollViewPager'
 import Home from './pages/Home'
 import CommonTab from './pages/CommonTab'
 
+type Options = NavigationDrawerScreenOptions
 type Props = {
-    navigation: NavigationScreenProp,
+    navigation: NavigationScreenProp<NavigationRoute>,
+    navigationOptions?: Options,
     screenProps: {
         themeColor: Array<string>,
     },
 }
 export default class Index extends PureComponent<Props> {
-    static navigationOptions: NavigationDrawerScreenOptions = {
+    static navigationOptions: NavigationScreenConfig<Options> = {
         drawerLabel: '首页',
         drawerIcon: ({ tintColor }) => <Icon name="home" size={18} color={tintColor} />,
     }

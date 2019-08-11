@@ -22,7 +22,6 @@ import { createAppContainer, createStackNavigator, createDrawerNavigator } from 
 
 import type {
     StackNavigatorConfig as IStackNavigatorConfig, // Interface StackNavigatorConfig 接口
-    DrawerNavigatorConfig as IDrawerNavigatorConfig, // Interface DrawerNavigatorConfig 接口
 } from 'react-navigation'
 
 import Provider from './store/context'
@@ -41,9 +40,10 @@ import DrawerContentComponent from './src/pages/DrawerContentComponent'
 import { themesGradient } from './src/pages/Theme'
 
 // DrawerNavigator config 配置
-const DrawerNavigatorConfig: IDrawerNavigatorConfig = {
+const DrawerNavigatorConfig = {
     drawerWidth: $.WIDTH * 0.7,
-    drawerType: 'back',
+    // @see https://kmagiera.github.io/react-native-gesture-handler/docs/component-drawer-layout.html
+    drawerType: 'back', // slide|back|front
     contentComponent: DrawerContentComponent,
 }
 

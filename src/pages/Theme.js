@@ -11,7 +11,16 @@
 import React from 'react'
 import { View, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/Feather'
-import { NavigationDrawerScreenOptions } from 'react-navigation'
+import type {
+    NavigationDrawerScreenOptions,
+    // NavigationNavigatorProps,
+    NavigationScreenConfig,
+    // NavigationRoute,
+    // NavigationScreenProp
+} from 'react-navigation'
+
+type Options = NavigationDrawerScreenOptions
+type Props = {}
 
 export const themes = [
     {
@@ -93,9 +102,8 @@ export const themesGradient: Array<{ color: Array<string> }> = [
     },
 ]
 
-type Props = {}
 export default class Theme extends React.PureComponent<Props> {
-    static navigationOptions: NavigationDrawerScreenOptions = {
+    static navigationOptions: NavigationScreenConfig<Options> = {
         drawerLabel: '主题',
         drawerIcon: ({ tintColor }) => <Icon name="feather" size={18} color={tintColor} />,
     }
