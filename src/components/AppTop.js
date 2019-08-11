@@ -11,8 +11,9 @@
 
 // import React, { PureComponent } from 'react'
 import * as React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-import { NavigationScreenProp } from 'react-navigation'
+import { /* View, */ Text, StyleSheet } from 'react-native'
+// Announcing Import Type @see: https://flow.org/blog/2015/02/18/Import-Types/
+import type { NavigationScreenProp, NavigationRoute } from 'react-navigation'
 import Icon from 'react-native-vector-icons/Feather'
 import LinearGradient from 'react-native-linear-gradient'
 import { BorderlessButton } from 'react-native-gesture-handler'
@@ -21,7 +22,7 @@ declare var $: any
 interface Props {
     title: string;
     themeColor: Array<string>;
-    navigation: NavigationScreenProp;
+    navigation: NavigationScreenProp<NavigationRoute>;
     children: React.Node;
 }
 
