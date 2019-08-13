@@ -57,6 +57,7 @@ export default class DrawerContentComponent extends PureComponent<Props> {
                         </ImageBackground>
                         <DrawerItems
                             // DrawerItems 缺少的props 已经在this.props中传递进去了
+                            // @see https://github.com/react-navigation/drawer/blob/master/src/views/DrawerSidebar.tsx
                             {...this.props}
                             {...contentOptions}
                             inactiveTintColor="#333"
