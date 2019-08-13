@@ -56,9 +56,8 @@ export default class DrawerContentComponent extends PureComponent<Props> {
                             )}
                         </ImageBackground>
                         <DrawerItems
+                            // DrawerItems 缺少的props 已经在this.props中传递进去了
                             {...this.props}
-                            // onItemPress={() => alert('xxxxx')}
-                            // drawerPosition="left"
                             {...contentOptions}
                             inactiveTintColor="#333"
                             activeTintColor={themeColor[0]}
