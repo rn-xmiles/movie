@@ -57,6 +57,8 @@ export default class DrawerContentComponent extends PureComponent<Props> {
                         </ImageBackground>
                         <DrawerItems
                             {...this.props}
+                            onItemPress={() => alert('xxxxx')}
+                            drawerPosition="left"
                             {...contentOptions}
                             inactiveTintColor="#333"
                             activeTintColor={themeColor[0]}
