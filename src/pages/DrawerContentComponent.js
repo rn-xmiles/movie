@@ -9,7 +9,9 @@
  * @see https://github.com/singcl
  */
 import React, { PureComponent } from 'react'
+import type { Node } from 'react'
 import { DrawerItems } from 'react-navigation'
+import type { NavigationRoute, NavigationScreenProp, NavigationState } from 'react-navigation'
 import { StyleSheet, ScrollView, ImageBackground, Image /* Text, TouchableOpacity, View */ } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 import { Context } from './../../store/context'
@@ -26,7 +28,37 @@ const contentOptions = {
     itemStyle: {},
 }
 
+type _DrawerScene = {
+    route: NavigationRoute,
+    focused: boolean,
+    index: number,
+    tintColor?: string,
+}
+type _DrawerItem = {
+    route: NavigationRoute,
+    focused: boolean,
+}
+
+// 补全contentComponent组件被内部调用时默认传入的props 定义
 type Props = {
+    navigation: NavigationScreenProp<NavigationState>,
+    items: Array<NavigationRoute>,
+    activeItemKey?: ?string,
+    activeTintColor?: string,
+    activeBackgroundColor?: string,
+    inactiveTintColor?: string,
+    inactiveBackgroundColor?: string,
+    getLabel: (scene: _DrawerScene) => ?(Node | string),
+    renderIcon: (scene: _DrawerScene) => ?Node,
+    onItemPress: (info: _DrawerItem) => void,
+    itemsContainerForceInset?: Object,
+    itemsContainerStyle?: any,
+    itemStyle?: any,
+    labelStyle?: any,
+    activeLabelStyle?: any,
+    inactiveLabelStyle?: any,
+    iconContainerStyle?: any,
+    drawerPosition: 'left' | 'right',
     screenProps: {
         themeColor: Array<string>,
         setTheme: () => void,
