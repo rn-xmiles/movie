@@ -11,6 +11,7 @@
 
 // import React, { PureComponent } from 'react'
 import * as React from 'react'
+import type { Node } from 'react'
 import { /* View, */ Text, StyleSheet } from 'react-native'
 // Announcing Import Type @see: https://flow.org/blog/2015/02/18/Import-Types/
 import type { NavigationScreenProp, NavigationRoute } from 'react-navigation'
@@ -19,17 +20,19 @@ import LinearGradient from 'react-native-linear-gradient'
 import { BorderlessButton } from 'react-native-gesture-handler'
 
 declare var $: any
-interface Props {
-    title: string;
-    themeColor: Array<string>;
-    navigation: NavigationScreenProp<NavigationRoute>;
-    children: React.Node;
+type Props = {
+    title: string,
+    themeColor: Array<string>,
+    navigation: NavigationScreenProp<NavigationRoute>,
+    children: Node,
 }
 
 export default class AppTop extends React.PureComponent<Props> {
     handleOnPress = () => {
         const { navigation } = this.props
-        navigation.openDrawer()
+        // openDrawer是可选属性 这样先判断再调用更加严谨同时消除flow错误警告
+        // openDrawer: void | (() => boolean)
+        navigation.openDrawer && navigation.openDrawer()
     }
 
     render() {
