@@ -31,7 +31,7 @@ class Storage {
     /**
      * 保存
      */
-    static save = async (key: string, value: string) => {
+    static save = async (key: string, value: string | { [key: string]: any }) => {
         try {
             await AsyncStorage.setItem(key, JSON.stringify(value))
             return true
@@ -44,7 +44,7 @@ class Storage {
     /**
      * 更新
      */
-    static update = async (key: string, value: string) => {
+    static update = async (key: string, value: string | { [key: string]: any }) => {
         try {
             await AsyncStorage.mergeItem(key, JSON.stringify(value))
             return true
