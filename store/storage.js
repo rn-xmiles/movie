@@ -15,7 +15,7 @@ class Storage {
     /**
      * 获取
      */
-    static get = async (key) => {
+    static get = async (key: string) => {
         try {
             const value = await AsyncStorage.getItem(key)
             if (value !== null) {
@@ -31,7 +31,7 @@ class Storage {
     /**
      * 保存
      */
-    static save = async (key, value) => {
+    static save = async (key: string, value: string) => {
         try {
             await AsyncStorage.setItem(key, JSON.stringify(value))
             return true
@@ -44,7 +44,7 @@ class Storage {
     /**
      * 更新
      */
-    static update = async (key, value) => {
+    static update = async (key: string, value: string) => {
         try {
             await AsyncStorage.mergeItem(key, JSON.stringify(value))
             return true
@@ -56,7 +56,7 @@ class Storage {
     /**
      * 删除
      */
-    static delete = async (key) => {
+    static delete = async (key: string) => {
         try {
             await AsyncStorage.removeItem(key)
             return true
