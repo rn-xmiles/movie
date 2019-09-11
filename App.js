@@ -29,6 +29,7 @@ import Storage from './store/storage'
 
 // pages/Screen
 import ProfileScreen from './src/pages/ProfileScreen'
+import MovieDetail from './src/pages/MovieDetail'
 import Index from './src/index'
 import History from './src/pages/History'
 import Collection from './src/pages/Collection'
@@ -90,6 +91,7 @@ const AppContainer = createAppContainer(
         {
             Drawer: Drawer,
             Profile: ProfileScreen,
+            MovieDetail: MovieDetail,
         },
         StackNavigatorConfig
     )

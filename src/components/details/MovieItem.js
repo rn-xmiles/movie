@@ -26,8 +26,12 @@ interface Props {
 
 // https://flow.org/en/docs/types/functions/
 // 箭头函数flow类型注解 和 ts 有所不同
-const MovieItem = ({ item /*, navigation*/ }: Props): React.Node => (
-    <TouchableOpacity style={styles.wrapper}>
+const MovieItem = ({ item, navigation }: Props): React.Node => (
+    <TouchableOpacity
+        style={styles.wrapper}
+        activeOpacity={0.9}
+        onPress={() => navigation.navigate('MovieDetail', { movieId: item.ID })}
+    >
         <Image style={styles.movieImg} source={{ uri: item.Cover || 'http' }} />
         <View style={styles.movieText}>
             <Text numberOfLines={1} style={styles.movieName}>
