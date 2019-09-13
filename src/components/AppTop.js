@@ -30,8 +30,9 @@ type Props = {
 export default class AppTop extends React.PureComponent<Props> {
     handleOnPress = () => {
         const { navigation } = this.props
-        // openDrawer是可选属性 这样先判断再调用更加严谨同时消除flow错误警告
-        // openDrawer: void | (() => boolean)
+        // openDrawer 是一个可选属性 openDrawer?: () => boolean
+        // 即类型为 void | (() => boolean)
+        // 所以这个先过滤void 不然flow 类型检测会不通过
         navigation.openDrawer && navigation.openDrawer()
     }
 
