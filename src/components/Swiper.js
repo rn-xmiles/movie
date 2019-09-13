@@ -11,7 +11,8 @@
 
 import * as React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from 'react-native'
-import { NavigationScreenProp } from 'react-navigation'
+// Announcing Import Type @see: https://flow.org/blog/2015/02/18/Import-Types/
+import type { NavigationScreenProp, NavigationRoute } from 'react-navigation'
 
 import Swiper from 'react-native-swiper'
 import Loading from './Loading'
@@ -25,7 +26,7 @@ interface MovieCard {
 type Props = {
     loading: boolean,
     themeColor: string,
-    navigation: NavigationScreenProp,
+    navigation: NavigationScreenProp<NavigationRoute>,
     data: {
         name: string,
         icon: string,
@@ -35,7 +36,7 @@ type Props = {
 
 class SwiperConf extends React.Component<Props> {
     render() {
-        const { loading, data, navigation, themeColor } = this.props
+        const { loading, data,/*  navigation, */ themeColor } = this.props
         if (loading) {
             return <Loading style={styles.item} size="small" themeColor={themeColor} />
         }
