@@ -31,7 +31,7 @@ class Storage {
     /**
      * 保存
      */
-    static save = async (key: string, value: string | { [key: string]: any }) => {
+    static save = async (key: string, value: string | { [key: string]: any } | Array<any>) => {
         try {
             await AsyncStorage.setItem(key, JSON.stringify(value))
             return true

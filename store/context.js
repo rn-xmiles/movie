@@ -10,6 +10,7 @@
  */
 
 import React, { createContext, PureComponent } from 'react'
+import type { Node } from 'react'
 import { ToastAndroid } from 'react-native'
 import Storage from './storage'
 
@@ -25,10 +26,10 @@ export const initialValue = {
 }
 
 // Context
-export const Context = createContext(initialValue)
+export const Context = createContext<State>(initialValue)
 
 type Props = {
-    children: React.ReactNode,
+    children: Node,
 }
 type State = {
     historyList: Array<any>,
@@ -65,7 +66,7 @@ export default class Provider extends PureComponent<Props, State> {
         Storage.save('settings', settings)
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps: Props, prevState: State) {
         // 历史记录更新时候本地持久化保存
         const { historyList, collectionList } = this.state
 
@@ -81,26 +82,23 @@ export default class Provider extends PureComponent<Props, State> {
     }
 
     // 历史记录初始化
-    initHistory = (list) => {
+    initHistory = (list: Array<any>) => {
         this.setState({
             historyList: list,
         })
     }
 
     // 添加历史记录
-    addHistory = (item) => {
+    addHistory = (item: Object) => {
         const { historyList } = this.state
-        this.setState(function(/* state, props */) {
+        this.setState(function (/* state, props */) {
             // 删除相同的历史记录，添加新的
             const index = historyList.findIndex((el) => el.id === item.id)
             if (index >= 0) {
                 historyList.splice(index, 1)
             }
             return {
-                historyList: {
-                    item,
-                    ...historyList,
-                },
+                historyList: [item, ...historyList],
             }
         })
     }
@@ -113,21 +111,21 @@ export default class Provider extends PureComponent<Props, State> {
     }
 
     // 查找历史记录
-    findHistory = (id) => {
+    findHistory = (id: number) => {
         const { historyList } = this.state
         return historyList.find((item) => item.id === id)
     }
 
     // 初始化收藏
-    initCollection = (list) => {
+    initCollection = (list: Array<any>) => {
         this.setState({
             collectionList: list,
         })
     }
 
     // 添加收藏
-    addCollection = (item) => {
-        this.setState(function(state) {
+    addCollection = (item: {}) => {
+        this.setState(function (state) {
             return {
                 collectionList: [...state.collectionList, item],
             }
@@ -144,13 +142,13 @@ export default class Provider extends PureComponent<Props, State> {
     }
 
     // 查找收藏
-    findCollection = (id) => {
+    findCollection = (id: string | number) => {
         const { collectionList } = this.state
         return collectionList.find((el) => el.id === id)
     }
 
     // 设置收藏
-    setCollection = (item) => {
+    setCollection = (item: { [key: string]: any }) => {
         if (this.findCollection(item.id)) {
             this.removeCollection([item.id])
             ToastAndroid && ToastAndroid.show(' ╮(╯﹏╰）╭ 已取消收藏 ', ToastAndroid.SHORT)
@@ -161,12 +159,12 @@ export default class Provider extends PureComponent<Props, State> {
     }
 
     // 初始化设置
-    initSettings = (settings) => {
+    initSettings = (settings: { [key: string]: any }) => {
         this.setState({ settings })
     }
 
     // 设置settings
-    setSettings = (type, value) => {
+    setSettings = (type: string, value: string) => {
         const settings = Object.assign({}, this.state.settings, { [type]: value })
         this.setState({
             settings,
