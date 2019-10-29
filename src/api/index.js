@@ -18,7 +18,17 @@ const WEB = 'https://www.kankanwu.com'
  * @param {String} s 图片的src值
  * @param {String} m 常量 WEB_M
  */
-const getHref: (s: string, m: string) => string = (s, m) => (s.includes('//') ? `https:${s}` : `${m}${s}`)
+const getHref: (s: string, m: string) => string = (s, m) => {
+    if (/^http?s/.test(s)) {
+        return s
+    }
+
+    if (/^\/\//.test(s)) {
+        return `https:${s}`
+    }
+
+    return `${m}${s}`
+}
 
 /**
  * cheerio DOM解析获取数据
