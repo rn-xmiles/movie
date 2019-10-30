@@ -71,7 +71,7 @@ Close all terminals and run build again.
 
 ```js
 // 引入组件
-import { BorderlessButton } from 'react-native-gesture-handler';
+import { BorderlessButton } from 'react-native-gesture-handler'
 ```
 
 问题：BorderlessButton 组件的 onPress 事件不生效
@@ -127,3 +127,41 @@ yarn add cheerio@0.22.0
 ```
 
 @see https://www.jianshu.com/p/ddf574337c47
+
+### 7
+
+```bash
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:packageRelease'.
+> com.android.ide.common.signing.KeytoolException: Failed to read key my-key-alias from store "C:\Users\your\Desktop\rn-xmiles\movie\android\app\my-release-key.keystore": Keystore was tampered with, or password was incorrect
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 2m 9s
+81 actionable tasks: 29 executed, 52 up-to-date
+```
+
+解决：~/.gradle/gradle.properties（全局配置，对所有项目有效）与 项目目录/android/gradle.properties（项目配置，只对所在项目有效）中配置的密码不一致
+
+### 8
+
+如果没有配置秘钥，`$ ./gradlew assembleRelease` 会生成没有签名的 APK，这个包安装会不成功。所以要先签名。
+
+### 9
+
+按官方文档配置签名时候
+
+```java
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+```
+
+这一段一定不要忘记写进去，不然还是会生成没有签名的 APK
